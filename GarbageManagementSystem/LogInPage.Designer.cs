@@ -31,13 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInPage));
             label1 = new Label();
             panel1 = new Panel();
+            linkLabel2 = new LinkLabel();
+            label6 = new Label();
+            button1 = new Button();
+            linkLabel1 = new LinkLabel();
+            checkBox1 = new CheckBox();
+            label5 = new Label();
+            label4 = new Label();
             richTextBox2 = new RichTextBox();
             richTextBox1 = new RichTextBox();
             label3 = new Label();
             panel2 = new Panel();
             label2 = new Label();
-            label4 = new Label();
-            label5 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,24 +58,121 @@
             // 
             panel1.Anchor = AnchorStyles.Top;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(linkLabel2);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(linkLabel1);
+            panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(richTextBox2);
             panel1.Controls.Add(richTextBox1);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(320, 240);
+            panel1.Location = new Point(320, 180);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
             panel1.Size = new Size(478, 600);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.BackColor = Color.Transparent;
+            linkLabel2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabel2.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkLabel2.LinkColor = Color.Khaki;
+            linkLabel2.Location = new Point(297, 484);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(63, 18);
+            linkLabel2.TabIndex = 14;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Sign Up";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Transparent;
+            label6.Location = new Point(119, 484);
+            label6.Name = "label6";
+            label6.Size = new Size(183, 18);
+            label6.TabIndex = 13;
+            label6.Text = "Don't have an account?";
+            label6.Click += label6_Click_1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Ivory;
+            button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Green;
+            button1.Location = new Point(76, 422);
+            button1.Name = "button1";
+            button1.Size = new Size(326, 53);
+            button1.TabIndex = 12;
+            button1.Text = "Log In";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.BackColor = Color.Transparent;
+            linkLabel1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabel1.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkLabel1.LinkColor = Color.Khaki;
+            linkLabel1.Location = new Point(269, 377);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(133, 18);
+            linkLabel1.TabIndex = 11;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Forgot Password?";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.BackColor = Color.Transparent;
+            checkBox1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkBox1.ForeColor = Color.Ivory;
+            checkBox1.Location = new Point(76, 376);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(137, 22);
+            checkBox1.TabIndex = 10;
+            checkBox1.Text = "Remember me";
+            checkBox1.UseVisualStyleBackColor = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Transparent;
+            label5.Location = new Point(76, 301);
+            label5.Name = "label5";
+            label5.Size = new Size(101, 23);
+            label5.TabIndex = 7;
+            label5.Text = "Password:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Transparent;
+            label4.Location = new Point(76, 236);
+            label4.Name = "label4";
+            label4.Size = new Size(75, 23);
+            label4.TabIndex = 6;
+            label4.Text = "Sign In:";
+            // 
             // richTextBox2
             // 
             richTextBox2.BackColor = Color.Ivory;
             richTextBox2.BorderStyle = BorderStyle.None;
             richTextBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            richTextBox2.Location = new Point(76, 252);
+            richTextBox2.Location = new Point(76, 332);
             richTextBox2.Margin = new Padding(5);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(326, 26);
@@ -82,7 +184,7 @@
             richTextBox1.BackColor = Color.Ivory;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            richTextBox1.Location = new Point(76, 178);
+            richTextBox1.Location = new Point(76, 267);
             richTextBox1.Margin = new Padding(5);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(326, 26);
@@ -93,20 +195,20 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Century Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Ivory;
-            label3.Location = new Point(130, 43);
+            label3.Location = new Point(77, 98);
             label3.Name = "label3";
-            label3.Size = new Size(218, 77);
+            label3.Size = new Size(325, 112);
             label3.TabIndex = 0;
             label3.Text = "Log In";
             label3.Click += label3_Click;
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top;
+            panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Ivory;
-            panel2.Location = new Point(320, 112);
+            panel2.Location = new Point(320, 121);
             panel2.Name = "panel2";
             panel2.Size = new Size(478, 130);
             panel2.TabIndex = 3;
@@ -120,30 +222,6 @@
             label2.Name = "label2";
             label2.Size = new Size(0, 15);
             label2.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Transparent;
-            label4.Location = new Point(76, 148);
-            label4.Name = "label4";
-            label4.Size = new Size(75, 23);
-            label4.TabIndex = 6;
-            label4.Text = "Sign In:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Transparent;
-            label5.Location = new Point(76, 224);
-            label5.Name = "label5";
-            label5.Size = new Size(101, 23);
-            label5.TabIndex = 7;
-            label5.Text = "Password:";
             // 
             // LogInPage
             // 
@@ -176,5 +254,10 @@
         private RichTextBox richTextBox2;
         private Label label4;
         private Label label5;
+        private LinkLabel linkLabel1;
+        private CheckBox checkBox1;
+        private Button button1;
+        private LinkLabel linkLabel2;
+        private Label label6;
     }
 }
