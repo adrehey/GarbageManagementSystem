@@ -36,5 +36,18 @@ namespace GarbageManagementSystem
         {
 
         }
+
+        private void linkLabel2_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            registrationPage reg = new registrationPage();
+            reg.Show();
+
+            this.Hide();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
