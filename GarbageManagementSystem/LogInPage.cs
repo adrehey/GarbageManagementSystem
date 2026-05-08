@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 namespace GarbageManagementSystem
 {
     public partial class LogInPage : Form
@@ -46,6 +48,65 @@ namespace GarbageManagementSystem
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            string filePath = "users.txt";
+
+            if (!File.Exists(filePath)) {
+
+                MessageBox.Show("No registered users found");
+                return;
+            
+         
+            }
+            string[] users = File.ReadAllLines(filePath);
+
+
+            foreach (string user in users) {
+
+                string[] data = user.Split(',');
+
+
+                if (data.Length < 3) {
+
+                    continue;
+
+                }
+
+                string storedUsername = data[0];
+                string storedPassword = data[1];
+                string Role = data[2].Trim();
+
+
+                if (username == storedUsername && password == storedPassword) {
+
+                    MessageBox.Show("Login successful");
+
+                    if (Role.Equals("Student", StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        StudentDashboard student = new StudentDashboard();
+                        student.Show();
+                        this.Hide();
+
+                    }
+
+                    else if (Role.Equals("Staff", StringComparison.OrdinalIgnoreCase)) {
+
+                        StaffDashboard staff = new StaffDashboard();
+                        staff.Show();
+                        this.Hide();
+                    }
+                    return;
+                } 
+            }
+            MessageBox.Show("Invalid username or password");
+        }
+
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }
