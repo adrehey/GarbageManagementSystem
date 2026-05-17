@@ -33,32 +33,34 @@
             btnRegister = new Button();
             btnback = new Button();
             cmbRole = new ComboBox();
+            txtStudentID = new TextBox();
             SuspendLayout();
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(265, 122);
+            txtUsername.Location = new Point(232, 61);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(125, 27);
+            txtUsername.PlaceholderText = "Username";
+            txtUsername.Size = new Size(110, 23);
             txtUsername.TabIndex = 0;
-            txtUsername.TextChanged += txtUsername_TextChanged;
-            txtUsername.Enter += txtUsername_Enter_1;
-            txtUsername.Leave += txtUsername_Leave;
-            // 
+           
             // txtPassword
             // 
-            txtPassword.Location = new Point(265, 176);
+            txtPassword.Location = new Point(232, 133);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
-            txtPassword.Size = new Size(125, 27);
+            txtPassword.Size = new Size(110, 23);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(364, 239);
+            btnRegister.Location = new Point(318, 179);
+            btnRegister.Margin = new Padding(3, 2, 3, 2);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(109, 29);
+            btnRegister.Size = new Size(95, 22);
             btnRegister.TabIndex = 3;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // 
             // btnback
             // 
-            btnback.Location = new Point(205, 235);
+            btnback.Location = new Point(179, 176);
+            btnback.Margin = new Padding(3, 2, 3, 2);
             btnback.Name = "btnback";
-            btnback.Size = new Size(133, 37);
+            btnback.Size = new Size(116, 28);
             btnback.TabIndex = 0;
             btnback.Text = "Back to login";
             btnback.Click += btnback_Click;
@@ -77,21 +80,33 @@
             // 
             cmbRole.FormattingEnabled = true;
             cmbRole.Items.AddRange(new object[] { "Staff ", "Student " });
-            cmbRole.Location = new Point(411, 121);
+            cmbRole.Location = new Point(360, 91);
+            cmbRole.Margin = new Padding(3, 2, 3, 2);
             cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(83, 28);
+            cmbRole.Size = new Size(73, 23);
             cmbRole.TabIndex = 4;
+            // 
+            // txtStudentID
+            // 
+            txtStudentID.Location = new Point(232, 96);
+            txtStudentID.Name = "txtStudentID";
+            txtStudentID.PlaceholderText = "School ID";
+            txtStudentID.Size = new Size(110, 23);
+            txtStudentID.TabIndex = 5;
+            txtStudentID.TextChanged += txtStudentID_TextChanged;
             // 
             // registrationPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
+            Controls.Add(txtStudentID);
             Controls.Add(cmbRole);
             Controls.Add(btnback);
             Controls.Add(btnRegister);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "registrationPage";
             Text = "registrationPage";
             ResumeLayout(false);
@@ -105,5 +120,6 @@
         private Button btnRegister;
         private Button btnback;
         private ComboBox cmbRole;
+        private TextBox txtStudentID;
     }
 }

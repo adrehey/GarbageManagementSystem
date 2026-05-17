@@ -54,53 +54,50 @@ namespace GarbageManagementSystem
 
             string filePath = "users.txt";
 
-            if (!File.Exists(filePath)) {
+            if (!File.Exists(filePath))
+            {
 
                 MessageBox.Show("No registered users found");
                 return;
-            
-         
+
+
             }
             string[] users = File.ReadAllLines(filePath);
 
-
-            foreach (string user in users) {
-
+            foreach (string user in users)
+            {
                 string[] data = user.Split(',');
 
-
-                if (data.Length < 3) {
-
-                    continue;
-
-                }
+                if (data.Length < 4)
+                    continue; // skip broken lines
 
                 string storedUsername = data[0];
                 string storedPassword = data[1];
-                string Role = data[2].Trim();
+                string role = data[2].Trim();
+                string storedID = data[3];
 
-
-                if (username == storedUsername && password == storedPassword) {
+                if (username == storedUsername && password == storedPassword)
+                {
+                    LoggedInUser.Name = storedUsername;
+                    LoggedInUser.ID = storedID;
 
                     MessageBox.Show("Login successful");
 
-                    if (Role.Equals("Student", StringComparison.OrdinalIgnoreCase))
+                    if (role.Trim().ToLower() == "student")
                     {
-
                         StudentDashboard student = new StudentDashboard();
                         student.Show();
                         this.Hide();
-
                     }
-
-                    else if (Role.Equals("Staff", StringComparison.OrdinalIgnoreCase)) {
-
+                    else if (role.Trim().ToLower() == "staff")
+                    {
                         StaffDashboard staff = new StaffDashboard();
                         staff.Show();
                         this.Hide();
                     }
+
                     return;
-                } 
+                }
             }
             MessageBox.Show("Invalid username or password");
         }

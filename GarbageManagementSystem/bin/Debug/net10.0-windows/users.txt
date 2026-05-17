@@ -1,4 +1,2 @@
-nico,12345
-Lol,000,
-hey,1111,Staff 
-nic,2222,Student 
+nico,1111,Student,2025-0356
+jan,nice,Staff,2025-0001

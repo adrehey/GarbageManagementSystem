@@ -78,17 +78,15 @@
             // txtPassword
             // 
             txtPassword.Location = new Point(77, 327);
-            txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(325, 30);
+            txtPassword.Size = new Size(325, 23);
             txtPassword.TabIndex = 15;
             // 
             // txtUsername
             // 
             txtUsername.Location = new Point(76, 262);
-            txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(325, 36);
+            txtUsername.Size = new Size(325, 23);
             txtUsername.TabIndex = 0;
             txtUsername.TextChanged += txtUsername_TextChanged;
             // 

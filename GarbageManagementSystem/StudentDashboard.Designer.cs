@@ -60,7 +60,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(41, 49);
+            label1.Location = new Point(519, 121);
             label1.Name = "label1";
             label1.Size = new Size(55, 15);
             label1.TabIndex = 0;
