@@ -13,7 +13,7 @@ namespace GarbageManagementSystem
         public StudentDashboard()
         {
             InitializeComponent();
-           
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -35,6 +35,13 @@ namespace GarbageManagementSystem
         private void btnReport_Click(object sender, EventArgs e)
         {
             LoadControl(new ReportControl());
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            LogInPage login = new LogInPage();
+            login.Show();
+            this.Hide();
         }
     }
 }

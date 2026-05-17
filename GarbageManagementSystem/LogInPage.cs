@@ -69,7 +69,7 @@ namespace GarbageManagementSystem
                 string[] data = user.Split(',');
 
                 if (data.Length < 4)
-                    continue; // skip broken lines
+                    continue; 
 
                 string storedUsername = data[0];
                 string storedPassword = data[1];
@@ -80,8 +80,6 @@ namespace GarbageManagementSystem
                 {
                     LoggedInUser.Name = storedUsername;
                     LoggedInUser.ID = storedID;
-
-                    MessageBox.Show("Login successful");
 
                     if (role.Trim().ToLower() == "student")
                     {

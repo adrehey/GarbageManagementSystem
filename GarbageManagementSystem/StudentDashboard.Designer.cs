@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             mainPanel = new Panel();
+            btnBack = new Button();
             btnReport = new Button();
             label1 = new Label();
             mainPanel.SuspendLayout();
@@ -37,6 +38,7 @@
             // mainPanel
             // 
             mainPanel.BackColor = SystemColors.ActiveBorder;
+            mainPanel.Controls.Add(btnBack);
             mainPanel.Controls.Add(btnReport);
             mainPanel.Controls.Add(label1);
             mainPanel.Dock = DockStyle.Fill;
@@ -45,6 +47,16 @@
             mainPanel.Size = new Size(1141, 709);
             mainPanel.TabIndex = 0;
             mainPanel.Paint += panel1_Paint;
+            // 
+            // btnBack
+            // 
+            btnBack.Location = new Point(519, 217);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(88, 23);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Back to login";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // btnReport
             // 
@@ -84,5 +96,6 @@
         private Panel mainPanel;
         private Label label1;
         private Button btnReport;
+        private Button btnBack;
     }
 }

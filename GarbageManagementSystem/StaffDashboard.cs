@@ -17,6 +17,18 @@ namespace GarbageManagementSystem
         {
             SetupGrid();
             LoadReports();
+
+            EnsureHistoryFile();
+        }
+
+        private void EnsureHistoryFile()
+        {
+            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
+
+            if (!File.Exists(historyPath))
+            {
+                File.Create(historyPath).Close();
+            }
         }
 
         private void SetupGrid()
@@ -27,6 +39,11 @@ namespace GarbageManagementSystem
             dgvReports.AllowUserToAddRows = false;
             dgvReports.ReadOnly = true;
             dgvReports.Dock = DockStyle.Fill;
+
+
+            dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvReports.MultiSelect = false;
+
 
             dgvReports.Columns.Add("Student", "Student");
             dgvReports.Columns.Add("ID", "ID");
@@ -59,7 +76,7 @@ namespace GarbageManagementSystem
 
                 if (data.Length == 6)
                 {
-                    dgvReports.Rows.Add(
+                    int rowIndex = dgvReports.Rows.Add(
                         data[0],
                         data[1],
                         data[2],
@@ -67,8 +84,109 @@ namespace GarbageManagementSystem
                         data[4],
                         data[5]
                     );
+
+
+                    string status = data[4].ToLower();
+
+                    if (status == "pending")
+                    {
+                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
+                    }
+                    else if (status == "in progress")
+                    {
+                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Khaki;
+                    }
+                    else if (status == "completed")
+                    {
+                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                    }
                 }
             }
+        }
+
+        private void SaveReports()
+        {
+            string path = Path.Combine(Application.StartupPath, "reports.txt");
+
+            var lines = dgvReports.Rows
+                .Cast<DataGridViewRow>()
+                .Where(r => !r.IsNewRow)
+                .Select(r =>
+                    string.Join(",",
+                        r.Cells[0].Value,
+                        r.Cells[1].Value,
+                        r.Cells[2].Value,
+                        r.Cells[3].Value,
+                        r.Cells[4].Value,
+                        r.Cells[5].Value
+                    ));
+
+            File.WriteAllLines(path, lines);
+        }
+
+        private void btnMarkCleared_Click(object sender, EventArgs e)
+        {
+            if (dgvReports.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a report first.");
+                return;
+            }
+
+            DataGridViewRow row = dgvReports.SelectedRows[0];
+
+
+            row.Cells[4].Value = "Completed";
+
+
+            row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+
+
+            SaveReports();
+        }
+
+        private void btnViewHistory_Click(object sender, EventArgs e)
+        {
+            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
+
+            if (!File.Exists(historyPath))
+            {
+                MessageBox.Show("No history found.");
+                return;
+            }
+
+            dgvReports.Rows.Clear();
+
+            string[] lines = File.ReadAllLines(historyPath);
+
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split(',')
+                                    .Select(x => x.Trim())
+                                    .ToArray();
+
+                if (data.Length == 6)
+                {
+                    int rowIndex = dgvReports.Rows.Add(
+                        data[0],
+                        data[1],
+                        data[2],
+                        data[3],
+                        data[4],
+                        data[5]
+                    );
+
+                    dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor =
+                        System.Drawing.Color.LightGreen;
+                }
+            }
+        }
+
+        private void btnViewReports_Click(object sender, EventArgs e)
+        {
+            LoadReports();
         }
     }
 }
