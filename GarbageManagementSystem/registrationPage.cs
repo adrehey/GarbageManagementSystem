@@ -52,7 +52,7 @@ namespace GarbageManagementSystem
             if (username == "" || password == "")
             {
 
-                MessageBox.Show("Pleas fill in all the feilds.");
+                MessageBox.Show("Pleas fill in all the fields.");
                 return;
 
             }

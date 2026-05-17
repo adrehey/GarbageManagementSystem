@@ -1,3 +1,4 @@
 nico,12345
 Lol,000,
 hey,1111,Staff 
+i am oten,password,Student 
