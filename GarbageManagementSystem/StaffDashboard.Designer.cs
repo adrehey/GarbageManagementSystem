@@ -34,10 +34,11 @@
             lblCompleted = new Label();
             lblPending = new Label();
             panelActions = new Panel();
+            btnExit = new Button();
             btnViewReports = new Button();
             btnViewHistory = new Button();
             btnMarkCleared = new Button();
-            btnExit = new Button();
+            btnLog = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             panelTop.SuspendLayout();
             panelActions.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // panelActions
             // 
+            panelActions.Controls.Add(btnLog);
             panelActions.Controls.Add(btnExit);
             panelActions.Controls.Add(btnViewReports);
             panelActions.Controls.Add(btnViewHistory);
@@ -106,6 +108,16 @@
             panelActions.Name = "panelActions";
             panelActions.Size = new Size(1156, 100);
             panelActions.TabIndex = 0;
+            // 
+            // btnExit
+            // 
+            btnExit.Location = new Point(447, 26);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(120, 40);
+            btnExit.TabIndex = 3;
+            btnExit.Text = "Exit system";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // btnViewReports
             // 
@@ -137,15 +149,15 @@
             btnMarkCleared.UseVisualStyleBackColor = true;
             btnMarkCleared.Click += btnMarkCleared_Click;
             // 
-            // btnExit
+            // btnLog
             // 
-            btnExit.Location = new Point(447, 26);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(120, 40);
-            btnExit.TabIndex = 3;
-            btnExit.Text = "Exit system";
-            btnExit.UseVisualStyleBackColor = true;
-            btnExit.Click += btnExit_Click;
+            btnLog.Location = new Point(618, 35);
+            btnLog.Name = "btnLog";
+            btnLog.Size = new Size(101, 23);
+            btnLog.TabIndex = 4;
+            btnLog.Text = "Back to login";
+            btnLog.UseVisualStyleBackColor = true;
+            btnLog.Click += btnLog_Click;
             // 
             // StaffDashboard
             // 
@@ -176,5 +188,6 @@
         private Label lblCompleted;
         private Label lblPending;
         private Button btnExit;
+        private Button btnLog;
     }
 }

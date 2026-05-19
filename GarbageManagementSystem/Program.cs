@@ -13,5 +13,11 @@ namespace GarbageManagementSystem
             ApplicationConfiguration.Initialize();
             Application.Run(new LogInPage());
         }
+
+        public static class AppConfig
+        {
+            public static bool DevMode = true;
+        }
+
     }
 }

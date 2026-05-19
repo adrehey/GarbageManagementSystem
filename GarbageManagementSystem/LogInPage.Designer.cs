@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInPage));
             label1 = new Label();
             panel1 = new Panel();
+            btnDevStaff = new Button();
+            btnDevStudent = new Button();
             txtPassword = new TextBox();
             txtUsername = new TextBox();
             linkLabel2 = new LinkLabel();
@@ -58,6 +60,8 @@
             // 
             panel1.Anchor = AnchorStyles.Top;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(btnDevStaff);
+            panel1.Controls.Add(btnDevStudent);
             panel1.Controls.Add(txtPassword);
             panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(linkLabel2);
@@ -74,6 +78,26 @@
             panel1.Size = new Size(478, 600);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // btnDevStaff
+            // 
+            btnDevStaff.Location = new Point(227, 536);
+            btnDevStaff.Name = "btnDevStaff";
+            btnDevStaff.Size = new Size(75, 23);
+            btnDevStaff.TabIndex = 17;
+            btnDevStaff.Text = "staff ";
+            btnDevStaff.UseVisualStyleBackColor = true;
+            btnDevStaff.Click += btnDevStaff_Click;
+            // 
+            // btnDevStudent
+            // 
+            btnDevStudent.Location = new Point(95, 536);
+            btnDevStudent.Name = "btnDevStudent";
+            btnDevStudent.Size = new Size(75, 23);
+            btnDevStudent.TabIndex = 16;
+            btnDevStudent.Text = "Student ";
+            btnDevStudent.UseVisualStyleBackColor = true;
+            btnDevStudent.Click += btnDevStudent_Click;
             // 
             // txtPassword
             // 
@@ -249,5 +273,7 @@
         private LinkLabel linkLabel2;
         private TextBox txtUsername;
         private TextBox txtPassword;
+        private Button btnDevStaff;
+        private Button btnDevStudent;
     }
 }

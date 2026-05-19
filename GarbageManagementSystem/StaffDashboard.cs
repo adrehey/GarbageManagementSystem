@@ -249,5 +249,12 @@ namespace GarbageManagementSystem
         {
             Application.Exit();
         }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            LogInPage login = new LogInPage();
+            login.Show();
+            this.Hide();
+        }
     }
 }

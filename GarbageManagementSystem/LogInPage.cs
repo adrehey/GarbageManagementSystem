@@ -69,7 +69,7 @@ namespace GarbageManagementSystem
                 string[] data = user.Split(',');
 
                 if (data.Length < 4)
-                    continue; 
+                    continue;
 
                 string storedUsername = data[0];
                 string storedPassword = data[1];
@@ -104,6 +104,20 @@ namespace GarbageManagementSystem
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDevStudent_Click(object sender, EventArgs e)
+        {
+            StudentDashboard sd = new StudentDashboard();
+            sd.Show();
+            this.Hide();
+        }
+
+        private void btnDevStaff_Click(object sender, EventArgs e)
+        {
+            StaffDashboard sd = new StaffDashboard();
+            sd.Show();
+            this.Hide();
         }
     }
 }
