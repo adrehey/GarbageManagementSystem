@@ -30,10 +30,13 @@
         {
             btnReport = new Button();
             btnBack = new Button();
+            lblWelcome = new Label();
+            btnOut = new Button();
             mainPanel = new Panel();
-            label1 = new Label();
-            label2 = new Label();
+            dgvMyReports = new DataGridView();
+            btnViewReports = new Button();
             mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyReports).BeginInit();
             SuspendLayout();
             // 
             // btnReport
@@ -48,7 +51,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(578, 306);
+            btnBack.Location = new Point(456, 284);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(88, 23);
             btnBack.TabIndex = 2;
@@ -56,11 +59,33 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.BackColor = SystemColors.ButtonHighlight;
+            lblWelcome.Location = new Point(234, 51);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(55, 15);
+            lblWelcome.TabIndex = 0;
+            lblWelcome.Text = "welcome";
+            // 
+            // btnOut
+            // 
+            btnOut.Location = new Point(456, 109);
+            btnOut.Name = "btnOut";
+            btnOut.Size = new Size(75, 23);
+            btnOut.TabIndex = 3;
+            btnOut.Text = "Log out";
+            btnOut.UseVisualStyleBackColor = true;
+            btnOut.Click += btnOut_Click;
+            // 
             // mainPanel
             // 
             mainPanel.BackColor = SystemColors.ActiveBorder;
-            mainPanel.Controls.Add(label2);
-            mainPanel.Controls.Add(label1);
+            mainPanel.Controls.Add(dgvMyReports);
+            mainPanel.Controls.Add(btnViewReports);
+            mainPanel.Controls.Add(btnOut);
+            mainPanel.Controls.Add(lblWelcome);
             mainPanel.Controls.Add(btnBack);
             mainPanel.Controls.Add(btnReport);
             mainPanel.Dock = DockStyle.Fill;
@@ -70,25 +95,23 @@
             mainPanel.TabIndex = 0;
             mainPanel.Paint += panel1_Paint;
             // 
-            // label1
+            // dgvMyReports
             // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(234, 51);
-            label1.Name = "label1";
-            label1.Size = new Size(55, 15);
-            label1.TabIndex = 0;
-            label1.Text = "welcome";
-           
+            dgvMyReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMyReports.Location = new Point(673, 51);
+            dgvMyReports.Name = "dgvMyReports";
+            dgvMyReports.Size = new Size(435, 256);
+            dgvMyReports.TabIndex = 5;
             // 
-            // label2
+            // btnViewReports
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(284, 168);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            btnViewReports.Location = new Point(284, 197);
+            btnViewReports.Name = "btnViewReports";
+            btnViewReports.Size = new Size(118, 23);
+            btnViewReports.TabIndex = 4;
+            btnViewReports.Text = "view my reports";
+            btnViewReports.UseVisualStyleBackColor = true;
+            btnViewReports.Click += btnViewReports_Click;
             // 
             // StudentDashboard
             // 
@@ -100,14 +123,18 @@
             Text = "StudentDashboard";
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMyReports).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
         private Button btnReport;
         private Button btnBack;
+        private Label lblWelcome;
+        private Button btnOut;
         private Panel mainPanel;
-        private Label label2;
-        private Label label1;
+        private Button btnViewReports;
+        private DataGridView dgvMyReports;
     }
 }

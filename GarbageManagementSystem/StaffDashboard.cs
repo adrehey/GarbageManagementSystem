@@ -1,39 +1,56 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
+using System.Data.SQLite;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GarbageManagementSystem
 {
     public partial class StaffDashboard : Form
     {
+        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+
         public StaffDashboard()
         {
             InitializeComponent();
             this.Load += StaffDashboard_Load;
         }
 
+        // FORM LOAD
         private void StaffDashboard_Load(object sender, EventArgs e)
         {
+            EnsureDatabaseTableExists();
             SetupGrid();
-            EnsureHistoryFile();
             LoadReports();
             UpdateStats();
         }
 
-
-        private void EnsureHistoryFile() //tig chech sa history file
+        // CREATE TABLE IF NOT EXISTS
+        private void EnsureDatabaseTableExists()
         {
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
-
-            if (!File.Exists(historyPath))
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
             {
-                File.Create(historyPath).Close();
+                con.Open();
+
+                string query = @"
+                CREATE TABLE IF NOT EXISTS Reports (
+                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    StudentName TEXT,
+                    StudentID TEXT,
+                    Location TEXT,
+                    BinCode TEXT,
+                    Status TEXT,
+                    DateTime TEXT
+                );";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
-
-        private void SetupGrid() //sa set up grid ni
+        // GRID SETUP
+        private void SetupGrid()
         {
             dgvReports.Columns.Clear();
 
@@ -43,213 +60,182 @@ namespace GarbageManagementSystem
             dgvReports.Dock = DockStyle.Fill;
 
             dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvReports.MultiSelect = false;
+            dgvReports.MultiSelect = true;
 
-            dgvReports.Columns.Add("Student", "Student");
+            // IMPORTANT: ID FIRST
             dgvReports.Columns.Add("ID", "ID");
+            dgvReports.Columns.Add("StudentName", "Student");
+            dgvReports.Columns.Add("StudentID", "ID");
             dgvReports.Columns.Add("Location", "Location");
-            dgvReports.Columns.Add("Bin", "Bin Code");
+            dgvReports.Columns.Add("BinCode", "Bin Code");
             dgvReports.Columns.Add("Status", "Status");
-            dgvReports.Columns.Add("Time", "Time");
+            dgvReports.Columns.Add("DateTime", "Time");
         }
 
-
-
-        private void LoadReports() // mopa kita sa mga active reports
+        // LOAD ACTIVE REPORTS
+        private void LoadReports()
         {
-            string path = Path.Combine(Application.StartupPath, "reports.txt");
-
             dgvReports.Rows.Clear();
 
-            if (!File.Exists(path))
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
             {
-                MessageBox.Show("reports.txt not found");
-                return;
-            }
+                con.Open();
 
-            string[] lines = File.ReadAllLines(path);
+                string query = "SELECT * FROM Reports WHERE Status != 'Completed'";
 
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split(',').Select(x => x.Trim()).ToArray();
-
-                if (data.Length == 6)
+                using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    int rowIndex = dgvReports.Rows.Add(
-                        data[0],
-                        data[1],
-                        data[2],
-                        data[3],
-                        data[4],
-                        data[5]
-                    );
+                    while (reader.Read())
+                    {
+                        string status = reader["Status"]?.ToString() ?? "";
 
-                    ApplyRowColor(rowIndex, data[4]);
+                        int rowIndex = dgvReports.Rows.Add(
+                            reader["ID"].ToString(),
+                            reader["StudentName"]?.ToString() ?? "",
+                            reader["StudentID"]?.ToString() ?? "",
+                            reader["Location"]?.ToString() ?? "",
+                            reader["BinCode"]?.ToString() ?? "",
+                            status,
+                            reader["DateTime"]?.ToString() ?? ""
+                        );
+
+                        ApplyRowColor(rowIndex, status);
+                    }
                 }
             }
         }
 
-
-
-        private void LoadHistory() // kani mao ni mo load sa history
+        // LOAD HISTORY
+        private void LoadHistory()
         {
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
-
             dgvReports.Rows.Clear();
 
-            if (!File.Exists(historyPath))
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
             {
-                MessageBox.Show("No history found.");
-                return;
-            }
+                con.Open();
 
-            string[] lines = File.ReadAllLines(historyPath);
+                string query = "SELECT * FROM Reports WHERE Status = 'Completed'";
 
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split(',').Select(x => x.Trim()).ToArray();
-
-                if (data.Length == 6)
+                using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    dgvReports.Rows.Add(
-                        data[0],
-                        data[1],
-                        data[2],
-                        data[3],
-                        data[4],
-                        data[5]
-                    );
+                    while (reader.Read())
+                    {
+                        string status = reader["Status"]?.ToString() ?? "";
+
+                        int rowIndex = dgvReports.Rows.Add(
+                            reader["ID"].ToString(),
+                            reader["StudentName"]?.ToString() ?? "",
+                            reader["StudentID"]?.ToString() ?? "",
+                            reader["Location"]?.ToString() ?? "",
+                            reader["BinCode"]?.ToString() ?? "",
+                            status,
+                            reader["DateTime"]?.ToString() ?? ""
+                        );
+
+                        ApplyRowColor(rowIndex, status);
+                    }
                 }
             }
         }
 
-
-
-
-        private void ApplyRowColor(int rowIndex, string status) // Mao ni nag hatag og color sa row
+        // ROW COLORS
+        private void ApplyRowColor(int rowIndex, string status)
         {
-            status = status.ToLower();
+            if (status.Equals("pending", StringComparison.OrdinalIgnoreCase))
+                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
 
-            if (status == "pending")
-                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
-            else if (status == "in progress")
-                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Khaki;
-            else if (status == "completed")
-                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+            else if (status.Equals("in progress", StringComparison.OrdinalIgnoreCase))
+                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Khaki;
+
+            else if (status.Equals("completed", StringComparison.OrdinalIgnoreCase))
+                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
         }
 
-
-
-        private void SaveReports() // mao ni ga save sa mga reports e butang ni sa report.txt file
-        {
-            string path = Path.Combine(Application.StartupPath, "reports.txt");
-
-            var lines = dgvReports.Rows
-                .Cast<DataGridViewRow>()
-                .Where(r => !r.IsNewRow)
-                .Select(r =>
-                    string.Join(",",
-                        r.Cells[0].Value,
-                        r.Cells[1].Value,
-                        r.Cells[2].Value,
-                        r.Cells[3].Value,
-                        r.Cells[4].Value,
-                        r.Cells[5].Value
-                    ));
-
-            File.WriteAllLines(path, lines);
-        }
-
-
-
-        private void btnMarkCleared_Click(object sender, EventArgs e) // button ni sya to clear or mark a clean sa mga active reports
+        // MARK AS COMPLETED (FIXED 🔥)
+        private void btnMarkCleared_Click(object sender, EventArgs e)
         {
             if (dgvReports.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a report first.");
+                MessageBox.Show("Please select at least one report.");
                 return;
             }
 
-            DataGridViewRow row = dgvReports.SelectedRows[0];
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
 
-            row.Cells[4].Value = "Completed";
-            row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                foreach (DataGridViewRow row in dgvReports.SelectedRows)
+                {
+                    string id = row.Cells["ID"].Value.ToString();
 
+                    string query = @"
+                        UPDATE Reports
+                        SET Status='Completed'
+                        WHERE ID=@id";
 
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
 
-            string completedReport = string.Join(",",
-                row.Cells[0].Value,
-                row.Cells[1].Value,
-                row.Cells[2].Value,
-                row.Cells[3].Value,
-                row.Cells[4].Value,
-                row.Cells[5].Value
-            );
+            MessageBox.Show("Selected reports marked as completed.");
 
-
-            File.AppendAllText(historyPath, completedReport + Environment.NewLine);
-
-
-            dgvReports.Rows.Remove(row);
-
-            SaveReports();
+            LoadReports();
             UpdateStats();
         }
 
-
-
-        private void btnViewHistory_Click(object sender, EventArgs e) // button rani to show the history 
+        // VIEW HISTORY
+        private void btnViewHistory_Click(object sender, EventArgs e)
         {
             LoadHistory();
             UpdateStats();
         }
 
-
-
-        private void btnViewReports_Click(object sender, EventArgs e) // button rani to show ang mga active reports
+        // VIEW ACTIVE REPORTS
+        private void btnViewReports_Click(object sender, EventArgs e)
         {
             LoadReports();
             UpdateStats();
         }
 
-
-
-        private void UpdateStats() // kani  mo update sa stats sa pending, completed, ug total reports
+        // UPDATE STATS
+        private void UpdateStats()
         {
             int pending = 0;
             int completed = 0;
 
-            foreach (DataGridViewRow row in dgvReports.Rows)
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
             {
-                if (row.IsNewRow) continue;
+                con.Open();
 
-                string status = row.Cells[4].Value?.ToString().ToLower();
+                pending = Convert.ToInt32(
+                    new SQLiteCommand("SELECT COUNT(*) FROM Reports WHERE Status='Pending'", con)
+                    .ExecuteScalar()
+                );
 
-                if (status == "pending")
-                    pending++;
-                else if (status == "completed")
-                    completed++;
+                completed = Convert.ToInt32(
+                    new SQLiteCommand("SELECT COUNT(*) FROM Reports WHERE Status='Completed'", con)
+                    .ExecuteScalar()
+                );
             }
-
-            int total = pending + completed;
 
             lblPending.Text = "Pending: " + pending;
             lblCompleted.Text = "Completed: " + completed;
-            lblTotal.Text = "Total: " + total;
+            lblTotal.Text = "Total: " + (pending + completed);
         }
 
+        // EXIT
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        // LOGOUT
         private void btnLog_Click(object sender, EventArgs e)
         {
             LogInPage login = new LogInPage();

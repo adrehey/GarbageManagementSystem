@@ -1,12 +1,11 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "2G8mFAPXYjs=",
-=======
-  "dgSpecHash": "QDbcfX5mNhI=",
->>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
+  "dgSpecHash": "nP3lICowU8E=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\GarbageManagementSystem\\GarbageManagementSystem\\GarbageManagementSystem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512"
+  ],
   "logs": []
 }

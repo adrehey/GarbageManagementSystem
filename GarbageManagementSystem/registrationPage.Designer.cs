@@ -38,26 +38,16 @@
             // 
             // txtUsername
             // 
-<<<<<<< HEAD
-            txtUsername.Location = new Point(232, 92);
-            txtUsername.Margin = new Padding(3, 2, 3, 2);
-            txtUsername.Name = "txtUsername";
-=======
             txtUsername.Location = new Point(232, 61);
             txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
->>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             txtUsername.Size = new Size(110, 23);
             txtUsername.TabIndex = 0;
-           
+            // 
             // txtPassword
             // 
-<<<<<<< HEAD
-            txtPassword.Location = new Point(232, 132);
-=======
             txtPassword.Location = new Point(232, 133);
->>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
@@ -110,10 +100,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
-<<<<<<< HEAD
-=======
             Controls.Add(txtStudentID);
->>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             Controls.Add(cmbRole);
             Controls.Add(btnback);
             Controls.Add(btnRegister);
