@@ -7,5 +7,14 @@
     <Compile Update="registrationPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="StaffDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StudentDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.IO;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GarbageManagementSystem
@@ -15,99 +12,61 @@ namespace GarbageManagementSystem
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_Enter_1(object sender, EventArgs e)
-        {
-            if (txtUsername.Text == "Enter Username")
-            {
-                txtUsername.Text = "";
-                txtUsername.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtUsername_Leave(object sender, EventArgs e)
-        {
-            if (txtUsername.Text == "")
-            {
-
-                txtUsername.Text = "Enter Username";
-                txtUsername.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string studentID = txtStudentID.Text.Trim();
+            string role = cmbRole.Text.Trim();
 
-            if (username == "" || password == "")
+            
+            if (username == "" || password == "" || studentID == "" || role == "")
             {
+<<<<<<< HEAD
 
                 MessageBox.Show("Pleas fill in all the fields.");
+=======
+                MessageBox.Show("Please fill in all fields.");
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
                 return;
-
             }
 
             string filePath = "users.txt";
 
+            
             if (!File.Exists(filePath))
             {
-
                 File.Create(filePath).Close();
-
             }
-
 
             string[] users = File.ReadAllLines(filePath);
 
+            
             foreach (string user in users)
             {
                 string[] data = user.Split(',');
 
-
-                if (data[0] == username)
+                if (data.Length >= 1)
                 {
-
-                    MessageBox.Show("Username already Exist.");
-                    return;
-
+                    if (data[0] == username)
+                    {
+                        MessageBox.Show("Username already exists.");
+                        return;
+                    }
                 }
-
             }
 
-            string role = cmbRole.Text;
-
-
-            if (role == "") {
-
-                MessageBox.Show("Please fill up your role");
-                return;
-            }
-
-
-            string userData = username + "," + password + "," + role;
-
+           
+            string userData = username + "," + password + "," + role + "," + studentID;
 
             File.AppendAllText(filePath, userData + Environment.NewLine);
 
-
-            MessageBox.Show("Registration Successful");
+            MessageBox.Show("Registration Successful!");
 
             txtUsername.Clear();
             txtPassword.Clear();
-
-
-
-
+            txtStudentID.Clear();
+            cmbRole.SelectedIndex = -1;
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -115,7 +74,9 @@ namespace GarbageManagementSystem
             LogInPage login = new LogInPage();
             login.Show();
             this.Hide();
-
         }
+
+        
+        private void txtStudentID_TextChanged(object sender, EventArgs e) { }
     }
 }

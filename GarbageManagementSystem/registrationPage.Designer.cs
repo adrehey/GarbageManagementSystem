@@ -33,22 +33,31 @@
             btnRegister = new Button();
             btnback = new Button();
             cmbRole = new ComboBox();
+            txtStudentID = new TextBox();
             SuspendLayout();
             // 
             // txtUsername
             // 
+<<<<<<< HEAD
             txtUsername.Location = new Point(232, 92);
             txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
+=======
+            txtUsername.Location = new Point(232, 61);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
+            txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "Username";
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             txtUsername.Size = new Size(110, 23);
             txtUsername.TabIndex = 0;
-            txtUsername.TextChanged += txtUsername_TextChanged;
-            txtUsername.Enter += txtUsername_Enter_1;
-            txtUsername.Leave += txtUsername_Leave;
-            // 
+           
             // txtPassword
             // 
+<<<<<<< HEAD
             txtPassword.Location = new Point(232, 132);
+=======
+            txtPassword.Location = new Point(232, 133);
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
@@ -87,11 +96,24 @@
             cmbRole.Size = new Size(73, 23);
             cmbRole.TabIndex = 4;
             // 
+            // txtStudentID
+            // 
+            txtStudentID.Location = new Point(232, 96);
+            txtStudentID.Name = "txtStudentID";
+            txtStudentID.PlaceholderText = "School ID";
+            txtStudentID.Size = new Size(110, 23);
+            txtStudentID.TabIndex = 5;
+            txtStudentID.TextChanged += txtStudentID_TextChanged;
+            // 
             // registrationPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+<<<<<<< HEAD
+=======
+            Controls.Add(txtStudentID);
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
             Controls.Add(cmbRole);
             Controls.Add(btnback);
             Controls.Add(btnRegister);
@@ -111,5 +133,6 @@
         private Button btnRegister;
         private Button btnback;
         private ComboBox cmbRole;
+        private TextBox txtStudentID;
     }
 }

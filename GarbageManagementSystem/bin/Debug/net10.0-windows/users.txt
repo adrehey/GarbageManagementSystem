@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 nico,12345
 Lol,000,
 hey,1111,Staff 
 i am oten,password,Student 
+=======
+nico,1111,Student,2025-0356
+jan,nice,Staff,2025-0001
+clark,1111,Student,0000
+alrdren,2222,Student,1111
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc

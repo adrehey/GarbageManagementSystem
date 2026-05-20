@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "2G8mFAPXYjs=",
+=======
+  "dgSpecHash": "QDbcfX5mNhI=",
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\GarbageManagementSystem\\GarbageManagementSystem\\GarbageManagementSystem.csproj",
   "expectedPackageFiles": [],
