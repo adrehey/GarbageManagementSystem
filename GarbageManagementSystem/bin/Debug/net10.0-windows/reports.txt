@@ -1,0 +1,4 @@
+clark,0000,Gym,BIN - 03,Pending,05/17/2026 23:38
+nico,2025-0356,IT Center,BIN - 01,Pending,05/17/2026 23:38
+nico,2025-0356,Cafeteria,BIN - 04,Pending,05/17/2026 23:38
+nico,2025-0356,Library,BIN - 02,Pending,05/17/2026 23:38
