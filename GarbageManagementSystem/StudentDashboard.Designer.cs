@@ -32,11 +32,16 @@
             mainPanel = new Panel();
             pictureBox1 = new PictureBox();
             btnBack = new Button();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            button1 = new Button();
             btnReport = new Button();
             label1 = new Label();
-            panel1 = new Panel();
+            button2 = new Button();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
@@ -45,8 +50,6 @@
             mainPanel.BackgroundImage = (Image)resources.GetObject("mainPanel.BackgroundImage");
             mainPanel.Controls.Add(pictureBox1);
             mainPanel.Controls.Add(btnBack);
-            mainPanel.Controls.Add(btnReport);
-            mainPanel.Controls.Add(label1);
             mainPanel.Controls.Add(panel1);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
@@ -68,43 +71,94 @@
             // 
             // btnBack
             // 
+            btnBack.BackColor = Color.FromArgb(0, 64, 0);
+            btnBack.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.White;
             btnBack.Location = new Point(12, 12);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(88, 23);
+            btnBack.Size = new Size(122, 36);
             btnBack.TabIndex = 2;
             btnBack.Text = "Back to login";
-            btnBack.UseVisualStyleBackColor = true;
+            btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(panel2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1904, 1041);
+            panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Transparent;
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnReport);
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(337, 1041);
+            panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(14, 929);
+            button1.Name = "button1";
+            button1.Size = new Size(310, 100);
+            button1.TabIndex = 2;
+            button1.Text = "Log Out";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnReport
             // 
-            btnReport.Location = new Point(33, 109);
+            btnReport.BackgroundImage = (Image)resources.GetObject("btnReport.BackgroundImage");
+            btnReport.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReport.ForeColor = Color.White;
+            btnReport.Location = new Point(14, 334);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(119, 23);
+            btnReport.Size = new Size(310, 78);
             btnReport.TabIndex = 1;
             btnReport.Text = "Report Trash";
+            btnReport.TextAlign = ContentAlignment.MiddleRight;
             btnReport.UseVisualStyleBackColor = true;
             btnReport.Click += btnReport_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(51, 184);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(93, 289);
             label1.Name = "label1";
-            label1.Size = new Size(55, 15);
+            label1.Size = new Size(113, 23);
             label1.TabIndex = 0;
-            label1.Text = "welcome";
+            label1.Text = "Welcome, !";
             label1.Click += label1_Click;
             // 
-            // panel1
+            // button2
             // 
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1904, 1041);
-            panel1.TabIndex = 4;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.ImageAlign = ContentAlignment.MiddleRight;
+            button2.Location = new Point(14, 418);
+            button2.Name = "button2";
+            button2.Size = new Size(310, 78);
+            button2.TabIndex = 3;
+            button2.Text = "My Reports  ";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
             // 
             // StudentDashboard
             // 
@@ -116,8 +170,10 @@
             Text = "StudentDashboard";
             WindowState = FormWindowState.Maximized;
             mainPanel.ResumeLayout(false);
-            mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -129,5 +185,8 @@
         private Button btnBack;
         private PictureBox pictureBox1;
         private Panel panel1;
+        private Panel panel2;
+        private Button button1;
+        private Button button2;
     }
 }
