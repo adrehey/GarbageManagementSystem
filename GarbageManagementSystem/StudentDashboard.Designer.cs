@@ -34,10 +34,10 @@
             btnBack = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
+            button2 = new Button();
             button1 = new Button();
             btnReport = new Button();
             label1 = new Label();
-            button2 = new Button();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -61,9 +61,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(339, 0);
+            pictureBox1.Location = new Point(339, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1565, 1041);
+            pictureBox1.Size = new Size(1553, 1017);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -72,6 +72,7 @@
             // btnBack
             // 
             btnBack.BackColor = Color.FromArgb(0, 64, 0);
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
             btnBack.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
             btnBack.Location = new Point(12, 12);
@@ -105,15 +106,29 @@
             panel2.Size = new Size(337, 1041);
             panel2.TabIndex = 2;
             // 
+            // button2
+            // 
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.White;
+            button2.ImageAlign = ContentAlignment.MiddleRight;
+            button2.Location = new Point(14, 418);
+            button2.Name = "button2";
+            button2.Size = new Size(310, 78);
+            button2.TabIndex = 3;
+            button2.Text = "My Reports  ";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(14, 929);
+            button1.Location = new Point(14, 951);
             button1.Name = "button1";
-            button1.Size = new Size(310, 100);
+            button1.Size = new Size(310, 78);
             button1.TabIndex = 2;
             button1.Text = "Log Out";
             button1.UseVisualStyleBackColor = true;
@@ -145,20 +160,6 @@
             label1.TabIndex = 0;
             label1.Text = "Welcome, !";
             label1.Click += label1_Click;
-            // 
-            // button2
-            // 
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.ImageAlign = ContentAlignment.MiddleRight;
-            button2.Location = new Point(14, 418);
-            button2.Name = "button2";
-            button2.Size = new Size(310, 78);
-            button2.TabIndex = 3;
-            button2.Text = "My Reports  ";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
             // 
             // StudentDashboard
             // 
