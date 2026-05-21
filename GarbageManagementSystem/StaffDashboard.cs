@@ -7,16 +7,27 @@ namespace GarbageManagementSystem
 {
     public partial class StaffDashboard : Form
     {
-        public StaffDashboard()
+        private string Username;
+
+        private bool showingReports = false;
+        private bool showingHistory = false;
+
+        public StaffDashboard(string user)
         {
             InitializeComponent();
             this.Load += StaffDashboard_Load;
+
+            Username = user;
         }
 
         private void StaffDashboard_Load(object sender, EventArgs e)
         {
             SetupGrid();
-            LoadReports();
+
+            dgvReports.Visible = false;
+            picMap.Visible = false;
+
+            lblUser.Text = $"Welcome, {Username} 👋";
 
             EnsureHistoryFile();
         }
@@ -38,12 +49,9 @@ namespace GarbageManagementSystem
             dgvReports.AutoGenerateColumns = false;
             dgvReports.AllowUserToAddRows = false;
             dgvReports.ReadOnly = true;
-            dgvReports.Dock = DockStyle.Fill;
-
 
             dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReports.MultiSelect = false;
-
 
             dgvReports.Columns.Add("Student", "Student");
             dgvReports.Columns.Add("ID", "ID");
@@ -53,6 +61,7 @@ namespace GarbageManagementSystem
             dgvReports.Columns.Add("Time", "Time");
         }
 
+        // ================= ACTIVE REPORTS =================
         private void LoadReports()
         {
             string path = Path.Combine(Application.StartupPath, "reports.txt");
@@ -65,41 +74,57 @@ namespace GarbageManagementSystem
                 return;
             }
 
-            string[] lines = File.ReadAllLines(path);
-
-            foreach (string line in lines)
+            foreach (string line in File.ReadAllLines(path))
             {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
+                if (string.IsNullOrWhiteSpace(line)) continue;
 
-                string[] data = line.Split(',').Select(x => x.Trim()).ToArray();
+                string[] data = line.Split(',')
+                                    .Select(x => x.Trim())
+                                    .ToArray();
 
                 if (data.Length == 6)
                 {
-                    int rowIndex = dgvReports.Rows.Add(
-                        data[0],
-                        data[1],
-                        data[2],
-                        data[3],
-                        data[4],
-                        data[5]
-                    );
-
+                    int rowIndex = dgvReports.Rows.Add(data);
 
                     string status = data[4].ToLower();
 
                     if (status == "pending")
-                    {
                         dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
-                    }
                     else if (status == "in progress")
-                    {
                         dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Khaki;
-                    }
                     else if (status == "completed")
-                    {
                         dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
-                    }
+                }
+            }
+        }
+
+        // ================= HISTORY =================
+        private void LoadHistory()
+        {
+            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
+
+            dgvReports.Rows.Clear();
+
+            if (!File.Exists(historyPath))
+            {
+                MessageBox.Show("No history found.");
+                return;
+            }
+
+            foreach (string line in File.ReadAllLines(historyPath))
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                string[] data = line.Split(',')
+                                    .Select(x => x.Trim())
+                                    .ToArray();
+
+                if (data.Length == 6)
+                {
+                    int rowIndex = dgvReports.Rows.Add(data);
+
+                    dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor =
+                        System.Drawing.Color.LightGreen;
                 }
             }
         }
@@ -111,19 +136,57 @@ namespace GarbageManagementSystem
             var lines = dgvReports.Rows
                 .Cast<DataGridViewRow>()
                 .Where(r => !r.IsNewRow)
-                .Select(r =>
-                    string.Join(",",
-                        r.Cells[0].Value,
-                        r.Cells[1].Value,
-                        r.Cells[2].Value,
-                        r.Cells[3].Value,
-                        r.Cells[4].Value,
-                        r.Cells[5].Value
-                    ));
+                .Select(r => string.Join(",",
+                    r.Cells[0].Value,
+                    r.Cells[1].Value,
+                    r.Cells[2].Value,
+                    r.Cells[3].Value,
+                    r.Cells[4].Value,
+                    r.Cells[5].Value
+                ));
 
             File.WriteAllLines(path, lines);
         }
 
+        // ================= TOGGLE REPORTS =================
+        private void btnViewReports_Click(object sender, EventArgs e)
+        {
+            showingReports = !showingReports;
+
+            if (showingReports)
+            {
+                showingHistory = false;
+                picMap.Visible = false;
+
+                dgvReports.Visible = true;
+                LoadReports();
+            }
+            else
+            {
+                dgvReports.Visible = false;
+            }
+        }
+
+        // ================= TOGGLE HISTORY =================
+        private void btnViewHistory_Click(object sender, EventArgs e)
+        {
+            showingHistory = !showingHistory;
+
+            if (showingHistory)
+            {
+                showingReports = false;
+                picMap.Visible = false;
+
+                dgvReports.Visible = true;
+                LoadHistory();
+            }
+            else
+            {
+                dgvReports.Visible = false;
+            }
+        }
+
+        // ================= MARK COMPLETED =================
         private void btnMarkCleared_Click(object sender, EventArgs e)
         {
             if (dgvReports.SelectedRows.Count == 0)
@@ -134,59 +197,29 @@ namespace GarbageManagementSystem
 
             DataGridViewRow row = dgvReports.SelectedRows[0];
 
-
             row.Cells[4].Value = "Completed";
-
-
             row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
-
 
             SaveReports();
         }
 
-        private void btnViewHistory_Click(object sender, EventArgs e)
+        // ================= MAP TOGGLE =================
+        private void btnShowMap_Click(object sender, EventArgs e)
         {
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
+            picMap.Visible = !picMap.Visible;
 
-            if (!File.Exists(historyPath))
+            if (picMap.Visible)
             {
-                MessageBox.Show("No history found.");
-                return;
-            }
-
-            dgvReports.Rows.Clear();
-
-            string[] lines = File.ReadAllLines(historyPath);
-
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split(',')
-                                    .Select(x => x.Trim())
-                                    .ToArray();
-
-                if (data.Length == 6)
-                {
-                    int rowIndex = dgvReports.Rows.Add(
-                        data[0],
-                        data[1],
-                        data[2],
-                        data[3],
-                        data[4],
-                        data[5]
-                    );
-
-                    dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor =
-                        System.Drawing.Color.LightGreen;
-                }
+                dgvReports.Visible = false;
+                showingReports = false;
+                showingHistory = false;
             }
         }
 
-        private void btnViewReports_Click(object sender, EventArgs e)
+        // ================= EXIT =================
+        private void btnOut_Click(object sender, EventArgs e)
         {
-            LoadReports();
+            Application.Exit();
         }
     }
 }

@@ -92,7 +92,7 @@ namespace GarbageManagementSystem
                     }
                     else if (role.Trim().ToLower() == "staff")
                     {
-                        StaffDashboard staff = new StaffDashboard();
+                        StaffDashboard staff = new StaffDashboard(username);
                         staff.Show();
                         this.Hide();
                     }
