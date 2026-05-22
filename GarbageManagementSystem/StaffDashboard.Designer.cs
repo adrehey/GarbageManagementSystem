@@ -144,9 +144,9 @@
             // dgvReports
             // 
             dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReports.Location = new Point(494, 269);
+            dgvReports.Location = new Point(339, 12);
             dgvReports.Name = "dgvReports";
-            dgvReports.Size = new Size(838, 522);
+            dgvReports.Size = new Size(1553, 1017);
             dgvReports.TabIndex = 9;
             // 
             // StaffDashboard

@@ -61,7 +61,7 @@
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(624, 182);
+            panel1.Location = new Point(743, 281);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(8);
@@ -199,7 +199,7 @@
             panel2.AutoSize = true;
             panel2.BackColor = Color.Ivory;
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(624, 148);
+            panel2.Location = new Point(743, 247);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(418, 111);
@@ -226,7 +226,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1666, 781);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
