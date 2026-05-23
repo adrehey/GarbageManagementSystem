@@ -33,13 +33,16 @@
             btnViewHistory = new Button();
             btnViewReports = new Button();
             picMap = new PictureBox();
-            btnBack = new Button();
             btnOut = new Button();
             btnShowMap = new Button();
             lblUser = new Label();
             dgvReports = new DataGridView();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picMap).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // btnMarkCleared
@@ -91,18 +94,6 @@
             picMap.TabIndex = 2;
             picMap.TabStop = false;
             // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.FromArgb(0, 64, 0);
-            btnBack.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(12, 12);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(122, 36);
-            btnBack.TabIndex = 3;
-            btnBack.Text = "Back to login";
-            btnBack.UseVisualStyleBackColor = false;
-            // 
             // btnOut
             // 
             btnOut.BackgroundImage = (Image)resources.GetObject("btnOut.BackgroundImage");
@@ -149,26 +140,52 @@
             dgvReports.Size = new Size(1553, 1017);
             dgvReports.TabIndex = 9;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(95, 135);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(143, 137);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(715, 120);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(800, 800);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // StaffDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1904, 1041);
+            Controls.Add(pictureBox1);
             Controls.Add(dgvReports);
             Controls.Add(lblUser);
             Controls.Add(btnShowMap);
             Controls.Add(btnOut);
-            Controls.Add(btnBack);
             Controls.Add(btnViewReports);
             Controls.Add(picMap);
             Controls.Add(btnViewHistory);
             Controls.Add(btnMarkCleared);
+            Controls.Add(pictureBox2);
             Name = "StaffDashboard";
             Text = "StaffDashboard";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)picMap).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvReports).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -179,10 +196,11 @@
         private Button btnViewHistory;
         private Button btnViewReports;
         private PictureBox picMap;
-        private Button btnBack;
         private Button btnOut;
         private Button btnShowMap;
         private Label lblUser;
         private DataGridView dgvReports;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

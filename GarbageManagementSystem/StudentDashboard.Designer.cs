@@ -35,13 +35,14 @@
             panel1 = new Panel();
             panel2 = new Panel();
             button2 = new Button();
-            button1 = new Button();
             btnReport = new Button();
             label1 = new Label();
+            pictureBox2 = new PictureBox();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // mainPanel
@@ -49,7 +50,6 @@
             mainPanel.BackColor = SystemColors.ActiveBorder;
             mainPanel.BackgroundImage = (Image)resources.GetObject("mainPanel.BackgroundImage");
             mainPanel.Controls.Add(pictureBox1);
-            mainPanel.Controls.Add(btnBack);
             mainPanel.Controls.Add(panel1);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
@@ -71,15 +71,15 @@
             // 
             // btnBack
             // 
-            btnBack.BackColor = Color.FromArgb(0, 64, 0);
+            btnBack.BackColor = Color.Transparent;
             btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
-            btnBack.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(12, 12);
+            btnBack.Location = new Point(14, 951);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(122, 36);
+            btnBack.Size = new Size(310, 78);
             btnBack.TabIndex = 2;
-            btnBack.Text = "Back to login";
+            btnBack.Text = "Log Out";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
@@ -97,8 +97,9 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(btnBack);
             panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(btnReport);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(0, 0);
@@ -119,20 +120,6 @@
             button2.Text = "My Reports  ";
             button2.TextAlign = ContentAlignment.MiddleRight;
             button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(14, 951);
-            button1.Name = "button1";
-            button1.Size = new Size(310, 78);
-            button1.TabIndex = 2;
-            button1.Text = "Log Out";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // btnReport
             // 
@@ -161,6 +148,16 @@
             label1.Text = "Welcome, !";
             label1.Click += label1_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(83, 112);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(172, 162);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            // 
             // StudentDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -175,6 +172,7 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -187,7 +185,7 @@
         private PictureBox pictureBox1;
         private Panel panel1;
         private Panel panel2;
-        private Button button1;
         private Button button2;
+        private PictureBox pictureBox2;
     }
 }

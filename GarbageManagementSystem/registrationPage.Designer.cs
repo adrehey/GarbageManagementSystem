@@ -92,12 +92,13 @@
             // 
             // cmbRole
             // 
+            cmbRole.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbRole.FormattingEnabled = true;
             cmbRole.Items.AddRange(new object[] { "Staff ", "Student " });
             cmbRole.Location = new Point(85, 400);
             cmbRole.Margin = new Padding(3, 2, 3, 2);
             cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(103, 23);
+            cmbRole.Size = new Size(103, 24);
             cmbRole.TabIndex = 4;
             // 
             // txtStudentID
