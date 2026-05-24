@@ -45,6 +45,8 @@
             button8 = new Button();
             button9 = new Button();
             button10 = new Button();
+            button11 = new Button();
+            button12 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -243,11 +245,37 @@
             button10.Text = "NB CR 4";
             button10.UseVisualStyleBackColor = false;
             // 
+            // button11
+            // 
+            button11.BackColor = Color.IndianRed;
+            button11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button11.ForeColor = Color.Transparent;
+            button11.Location = new Point(754, 46);
+            button11.Name = "button11";
+            button11.Size = new Size(84, 31);
+            button11.TabIndex = 19;
+            button11.Text = "CAS CR 1";
+            button11.UseVisualStyleBackColor = false;
+            // 
+            // button12
+            // 
+            button12.BackColor = Color.IndianRed;
+            button12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button12.ForeColor = Color.Transparent;
+            button12.Location = new Point(754, 83);
+            button12.Name = "button12";
+            button12.Size = new Size(84, 31);
+            button12.TabIndex = 20;
+            button12.Text = "CAS CR 2";
+            button12.UseVisualStyleBackColor = false;
+            // 
             // ReportControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGreen;
+            Controls.Add(button12);
+            Controls.Add(button11);
             Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -287,5 +315,7 @@
         private Button button8;
         private Button button9;
         private Button button10;
+        private Button button11;
+        private Button button12;
     }
 }

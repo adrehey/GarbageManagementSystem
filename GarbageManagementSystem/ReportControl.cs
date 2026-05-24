@@ -42,7 +42,7 @@ namespace GarbageManagementSystem
         private void btnGym_Click(object sender, EventArgs e)
         {
 
-            SaveReport("Gym", "BIN - 03");
+            SaveReport("NB CR 1", "BIN - 03");
 
 
         }
