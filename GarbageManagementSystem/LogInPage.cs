@@ -28,6 +28,12 @@ namespace GarbageManagementSystem
 
             try
             {
+                // Read user info into locals while the connection is open,
+                // then dispose the connection before creating/showing forms.
+                string dbUsername = null;
+                string dbStudentID = null;
+                string role = null;
+
                 using (SQLiteConnection con = new SQLiteConnection(connectionString))
                 {
                     con.Open();
@@ -48,39 +54,42 @@ namespace GarbageManagementSystem
                         {
                             if (reader.Read())
                             {
-                                string dbUsername = reader["Username"]?.ToString();
-                                string dbStudentID = reader["StudentID"]?.ToString();
-                                string role = reader["Role"]?.ToString();
-
-                                // Save logged in user globally
-                                LoggedInUser.Name = dbUsername;   // display name
-                                LoggedInUser.ID = dbStudentID;    // login ID
-
-                                MessageBox.Show($"Welcome, {dbUsername}!");
-
-                                if (role.Equals("student", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    StudentDashboard sd = new StudentDashboard();
-                                    sd.Show();
-                                    this.Hide();
-                                }
-                                else if (role.Equals("staff", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    StaffDashboard sd = new StaffDashboard();
-                                    sd.Show();
-                                    this.Hide();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Invalid user role detected.");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Invalid ID number or password.");
+                                dbUsername = reader["Username"]?.ToString();
+                                dbStudentID = reader["StudentID"]?.ToString();
+                                role = reader["Role"]?.ToString();
                             }
                         }
                     }
+                } // connection and reader disposed here
+
+                if (dbUsername != null)
+                {
+                    // Save logged in user globally
+                    LoggedInUser.Name = dbUsername;   // display name
+                    LoggedInUser.ID = dbStudentID;    // login ID
+
+                    MessageBox.Show($"Welcome, {dbUsername}!");
+
+                    if (string.Equals(role, "student", StringComparison.OrdinalIgnoreCase))
+                    {
+                        StudentDashboard sd = new StudentDashboard();
+                        sd.Show();
+                        this.Hide();
+                    }
+                    else if (string.Equals(role, "staff", StringComparison.OrdinalIgnoreCase))
+                    {
+                        StaffDashboard sd = new StaffDashboard();
+                        sd.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid user role detected.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid ID number or password.");
                 }
             }
             catch (Exception ex)

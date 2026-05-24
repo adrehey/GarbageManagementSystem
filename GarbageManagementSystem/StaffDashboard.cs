@@ -7,7 +7,10 @@ namespace GarbageManagementSystem
 {
     public partial class StaffDashboard : Form
     {
-        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+        private readonly string connectionString =
+            "Data Source=garbage.db;Version=3;BusyTimeout=3000;";
+
+        private bool isUpdating = false;
 
         public StaffDashboard()
         {
@@ -19,9 +22,17 @@ namespace GarbageManagementSystem
         private void StaffDashboard_Load(object sender, EventArgs e)
         {
             EnsureDatabaseTableExists();
+
             SetupGrid();
             LoadReports();
             UpdateStats();
+
+            LoadNotifications();
+            MarkReportsAsRead();
+
+            timerNotify.Interval = 5000;
+            timerNotify.Tick += timerNotify_Tick;
+            timerNotify.Start();
         }
 
         // CREATE TABLE IF NOT EXISTS
@@ -39,7 +50,8 @@ namespace GarbageManagementSystem
                     Location TEXT,
                     BinCode TEXT,
                     Status TEXT,
-                    DateTime TEXT
+                    DateTime TEXT,
+                    IsRead INTEGER DEFAULT 0
                 );";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, con))
@@ -58,11 +70,9 @@ namespace GarbageManagementSystem
             dgvReports.AllowUserToAddRows = false;
             dgvReports.ReadOnly = true;
             dgvReports.Dock = DockStyle.Fill;
-
             dgvReports.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReports.MultiSelect = true;
 
-            // IMPORTANT: ID FIRST
             dgvReports.Columns.Add("ID", "ID");
             dgvReports.Columns.Add("StudentName", "Student");
             dgvReports.Columns.Add("StudentID", "ID");
@@ -153,7 +163,7 @@ namespace GarbageManagementSystem
                 dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
         }
 
-        // MARK AS COMPLETED (FIXED 🔥)
+        // MARK AS COMPLETED
         private void btnMarkCleared_Click(object sender, EventArgs e)
         {
             if (dgvReports.SelectedRows.Count == 0)
@@ -170,10 +180,7 @@ namespace GarbageManagementSystem
                 {
                     string id = row.Cells["ID"].Value.ToString();
 
-                    string query = @"
-                        UPDATE Reports
-                        SET Status='Completed'
-                        WHERE ID=@id";
+                    string query = @"UPDATE Reports SET Status='Completed' WHERE ID=@id";
 
                     using (SQLiteCommand cmd = new SQLiteCommand(query, con))
                     {
@@ -182,8 +189,6 @@ namespace GarbageManagementSystem
                     }
                 }
             }
-
-            MessageBox.Show("Selected reports marked as completed.");
 
             LoadReports();
             UpdateStats();
@@ -206,27 +211,73 @@ namespace GarbageManagementSystem
         // UPDATE STATS
         private void UpdateStats()
         {
-            int pending = 0;
-            int completed = 0;
-
             using (SQLiteConnection con = new SQLiteConnection(connectionString))
             {
                 con.Open();
 
-                pending = Convert.ToInt32(
+                int pending = Convert.ToInt32(
                     new SQLiteCommand("SELECT COUNT(*) FROM Reports WHERE Status='Pending'", con)
-                    .ExecuteScalar()
-                );
+                    .ExecuteScalar());
 
-                completed = Convert.ToInt32(
+                int completed = Convert.ToInt32(
                     new SQLiteCommand("SELECT COUNT(*) FROM Reports WHERE Status='Completed'", con)
-                    .ExecuteScalar()
-                );
-            }
+                    .ExecuteScalar());
 
-            lblPending.Text = "Pending: " + pending;
-            lblCompleted.Text = "Completed: " + completed;
-            lblTotal.Text = "Total: " + (pending + completed);
+                lblPending.Text = "Pending: " + pending;
+                lblCompleted.Text = "Completed: " + completed;
+                lblTotal.Text = "Total: " + (pending + completed);
+            }
+        }
+
+        // 🔔 NOTIFICATIONS
+        private void LoadNotifications()
+        {
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+
+                string query = "SELECT COUNT(*) FROM Reports WHERE IsRead = 0";
+                SQLiteCommand cmd = new SQLiteCommand(query, con);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                lblNewReports.Text = "New Reports: " + count;
+                lblNewReports.ForeColor = count > 0 ? Color.Red : Color.Green;
+            }
+        }
+
+        // MARK AS READ
+        private void MarkReportsAsRead()
+        {
+            using (SQLiteConnection con = new SQLiteConnection(connectionString))
+            {
+                con.Open();
+
+                string query = "UPDATE Reports SET IsRead = 1 WHERE IsRead = 0";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // TIMER (SAFE VERSION)
+        private void timerNotify_Tick(object sender, EventArgs e)
+        {
+            if (isUpdating) return;
+
+            try
+            {
+                isUpdating = true;
+
+                LoadNotifications();
+                UpdateStats();
+            }
+            finally
+            {
+                isUpdating = false;
+            }
         }
 
         // EXIT

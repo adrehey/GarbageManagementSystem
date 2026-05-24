@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvReports = new DataGridView();
             panelTop = new Panel();
             lblTotal = new Label();
             lblCompleted = new Label();
             lblPending = new Label();
             panelActions = new Panel();
+            btnLog = new Button();
             btnExit = new Button();
             btnViewReports = new Button();
             btnViewHistory = new Button();
             btnMarkCleared = new Button();
-            btnLog = new Button();
+            lblNewReports = new Label();
+            timerNotify = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             panelTop.SuspendLayout();
             panelActions.SuspendLayout();
@@ -57,6 +60,7 @@
             // 
             // panelTop
             // 
+            panelTop.Controls.Add(lblNewReports);
             panelTop.Controls.Add(lblTotal);
             panelTop.Controls.Add(lblCompleted);
             panelTop.Controls.Add(lblPending);
@@ -109,6 +113,16 @@
             panelActions.Size = new Size(1156, 100);
             panelActions.TabIndex = 0;
             // 
+            // btnLog
+            // 
+            btnLog.Location = new Point(618, 35);
+            btnLog.Name = "btnLog";
+            btnLog.Size = new Size(101, 23);
+            btnLog.TabIndex = 4;
+            btnLog.Text = "Back to login";
+            btnLog.UseVisualStyleBackColor = true;
+            btnLog.Click += btnLog_Click;
+            // 
             // btnExit
             // 
             btnExit.Location = new Point(447, 26);
@@ -149,15 +163,14 @@
             btnMarkCleared.UseVisualStyleBackColor = true;
             btnMarkCleared.Click += btnMarkCleared_Click;
             // 
-            // btnLog
+            // lblNewReports
             // 
-            btnLog.Location = new Point(618, 35);
-            btnLog.Name = "btnLog";
-            btnLog.Size = new Size(101, 23);
-            btnLog.TabIndex = 4;
-            btnLog.Text = "Back to login";
-            btnLog.UseVisualStyleBackColor = true;
-            btnLog.Click += btnLog_Click;
+            lblNewReports.AutoSize = true;
+            lblNewReports.Location = new Point(622, 35);
+            lblNewReports.Name = "lblNewReports";
+            lblNewReports.Size = new Size(77, 15);
+            lblNewReports.TabIndex = 3;
+            lblNewReports.Text = "New Reports:";
             // 
             // StaffDashboard
             // 
@@ -189,5 +202,7 @@
         private Label lblPending;
         private Button btnExit;
         private Button btnLog;
+        private Label lblNewReports;
+        private System.Windows.Forms.Timer timerNotify;
     }
 }
