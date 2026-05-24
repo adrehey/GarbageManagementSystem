@@ -30,18 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInPage));
             panel1 = new Panel();
+<<<<<<< Updated upstream
             txtPassword = new TextBox();
             txtUsername = new TextBox();
             linkLabel2 = new LinkLabel();
+=======
+            linkReg = new LinkLabel();
+>>>>>>> Stashed changes
             label6 = new Label();
             btnLogin = new Button();
-            linkLabel1 = new LinkLabel();
-            checkBox1 = new CheckBox();
+            chkShowPassword = new CheckBox();
             label5 = new Label();
             label4 = new Label();
+<<<<<<< Updated upstream
             label3 = new Label();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
+=======
+            txtUsername = new RichTextBox();
+            label3 = new Label();
+            panel2 = new Panel();
+            label2 = new Label();
+            txtPassword = new TextBox();
+>>>>>>> Stashed changes
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,14 +63,21 @@
             panel1.Anchor = AnchorStyles.Top;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.Controls.Add(txtPassword);
+<<<<<<< Updated upstream
             panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(linkLabel2);
+=======
+            panel1.Controls.Add(linkReg);
+>>>>>>> Stashed changes
             panel1.Controls.Add(label6);
             panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(chkShowPassword);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
+<<<<<<< Updated upstream
+=======
+            panel1.Controls.Add(txtUsername);
+>>>>>>> Stashed changes
             panel1.Controls.Add(label3);
             panel1.Location = new Point(743, 281);
             panel1.Margin = new Padding(3, 2, 3, 2);
@@ -69,6 +87,7 @@
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
+<<<<<<< Updated upstream
             // txtPassword
             // 
             txtPassword.Location = new Point(67, 306);
@@ -99,6 +118,19 @@
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Sign Up";
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+=======
+            // linkReg
+            // 
+            linkReg.BackColor = Color.ForestGreen;
+            linkReg.LinkColor = Color.Khaki;
+            linkReg.Location = new Point(318, 486);
+            linkReg.Name = "linkReg";
+            linkReg.Size = new Size(133, 18);
+            linkReg.TabIndex = 11;
+            linkReg.TabStop = true;
+            linkReg.Text = "Sign up";
+            linkReg.LinkClicked += linkLabel2_LinkClicked_1;
+>>>>>>> Stashed changes
             // 
             // label6
             // 
@@ -127,8 +159,9 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // linkLabel1
+            // chkShowPassword
             // 
+<<<<<<< Updated upstream
             linkLabel1.AutoSize = true;
             linkLabel1.BackColor = Color.Transparent;
             linkLabel1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -155,6 +188,19 @@
             checkBox1.TabIndex = 10;
             checkBox1.Text = "Remember me";
             checkBox1.UseVisualStyleBackColor = false;
+=======
+            chkShowPassword.AutoSize = true;
+            chkShowPassword.BackColor = Color.Transparent;
+            chkShowPassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chkShowPassword.ForeColor = Color.Ivory;
+            chkShowPassword.Location = new Point(76, 376);
+            chkShowPassword.Name = "chkShowPassword";
+            chkShowPassword.Size = new Size(137, 22);
+            chkShowPassword.TabIndex = 10;
+            chkShowPassword.Text = "Show Password";
+            chkShowPassword.UseVisualStyleBackColor = false;
+            chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
+>>>>>>> Stashed changes
             // 
             // label5
             // 
@@ -178,8 +224,24 @@
             label4.Name = "label4";
             label4.Size = new Size(108, 23);
             label4.TabIndex = 6;
+<<<<<<< Updated upstream
             label4.Text = "Username:";
             label4.Click += label4_Click;
+=======
+            label4.Text = "Sign In:";
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = Color.Ivory;
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsername.Location = new Point(76, 267);
+            txtUsername.Margin = new Padding(5);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(326, 26);
+            txtUsername.TabIndex = 4;
+            txtUsername.Text = "";
+>>>>>>> Stashed changes
             // 
             // label3
             // 
@@ -219,6 +281,13 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(77, 327);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(326, 23);
+            txtPassword.TabIndex = 14;
+            // 
             // LogInPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -247,15 +316,25 @@
         private Panel panel1;
         private Label label3;
         private Panel panel2;
+<<<<<<< Updated upstream
+=======
+        private RichTextBox txtUsername;
+>>>>>>> Stashed changes
         private Label label4;
         private Label label5;
         private LinkLabel linkLabel1;
-        private CheckBox checkBox1;
+        private CheckBox chkShowPassword;
         private Button btnLogin;
+<<<<<<< Updated upstream
         private LinkLabel linkLabel2;
         private Label label6;
         private TextBox txtUsername;
         private TextBox txtPassword;
         private PictureBox pictureBox1;
+=======
+        private Label label6;
+        private LinkLabel linkReg;
+        private TextBox txtPassword;
+>>>>>>> Stashed changes
     }
 }

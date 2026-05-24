@@ -1,11 +1,21 @@
 <<<<<<< HEAD
 =======
+<<<<<<< Updated upstream
 >>>>>>> 0c814014e53ea68d29a0076c6cea35767107594d
+=======
+>>>>>>> 84b9f26da8c0a21dc0a4c942eb856d4b840908dc
+>>>>>>> Stashed changes
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\GarbageManagementSystem.exe
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\GarbageManagementSystem.deps.json
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\GarbageManagementSystem.runtimeconfig.json
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\GarbageManagementSystem.dll
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\GarbageManagementSystem.pdb
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\System.Data.SQLite.dll
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\bin\Debug\net10.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.csproj.AssemblyReference.cache
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.LogInPage.resources
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.Properties.Resources.resources
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.registrationPage.resources
@@ -20,6 +30,7 @@ C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSys
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.AssemblyInfo.cs
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.sourcelink.json
+C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageM.2547B327.Up2Date
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.dll
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\refint\GarbageManagementSystem.dll
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.pdb

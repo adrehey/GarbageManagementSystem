@@ -50,16 +50,28 @@
             // 
             // txtUsername
             // 
+<<<<<<< Updated upstream
             txtUsername.Location = new Point(86, 216);
             txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
             txtUsername.Size = new Size(325, 23);
+=======
+            txtUsername.Location = new Point(232, 61);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
+            txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "Username";
+            txtUsername.Size = new Size(110, 23);
+>>>>>>> Stashed changes
             txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
+<<<<<<< Updated upstream
             txtPassword.Location = new Point(86, 341);
+=======
+            txtPassword.Location = new Point(232, 133);
+>>>>>>> Stashed changes
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
@@ -217,11 +229,21 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+<<<<<<< Updated upstream
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
+=======
+            ClientSize = new Size(700, 338);
+            Controls.Add(txtStudentID);
+            Controls.Add(cmbRole);
+            Controls.Add(btnback);
+            Controls.Add(btnRegister);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
+>>>>>>> Stashed changes
             Margin = new Padding(3, 2, 3, 2);
             Name = "registrationPage";
             Text = "registrationPage";
