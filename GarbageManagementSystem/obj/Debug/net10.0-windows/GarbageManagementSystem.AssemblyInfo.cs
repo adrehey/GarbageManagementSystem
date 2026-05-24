@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GarbageManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28603d468aa2165cfb419b08ab345b25e8f91585")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a02a0c264b68bccfdb6a7def24aa41ae108be8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GarbageManagementSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GarbageManagementSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
