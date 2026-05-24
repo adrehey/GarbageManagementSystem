@@ -30,18 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             mainPanel = new Panel();
-            pictureBox1 = new PictureBox();
             panel1 = new Panel();
             panel2 = new Panel();
+            pictureBox3 = new PictureBox();
+            pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             btnBack = new Button();
             button2 = new Button();
             btnReport = new Button();
             label1 = new Label();
             mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +51,6 @@
             // 
             mainPanel.BackColor = SystemColors.ActiveBorder;
             mainPanel.BackgroundImage = (Image)resources.GetObject("mainPanel.BackgroundImage");
-            mainPanel.Controls.Add(pictureBox1);
             mainPanel.Controls.Add(panel1);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
@@ -57,17 +58,6 @@
             mainPanel.Size = new Size(1904, 1041);
             mainPanel.TabIndex = 0;
             mainPanel.Paint += panel1_Paint;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(339, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1553, 1017);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel1
             // 
@@ -83,6 +73,8 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(btnBack);
             panel2.Controls.Add(button2);
@@ -90,13 +82,35 @@
             panel2.Controls.Add(label1);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(337, 1041);
+            panel2.Size = new Size(664, 1070);
             panel2.TabIndex = 2;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(188, 448);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(60, 60);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 6;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(194, 364);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(60, 60);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(79, 106);
+            pictureBox2.Location = new Point(233, 106);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(180, 180);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -109,9 +123,9 @@
             btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
             btnBack.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(14, 951);
+            btnBack.Location = new Point(96, 844);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(310, 78);
+            btnBack.Size = new Size(455, 78);
             btnBack.TabIndex = 2;
             btnBack.Text = "Log Out";
             btnBack.UseVisualStyleBackColor = false;
@@ -123,12 +137,11 @@
             button2.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
             button2.ImageAlign = ContentAlignment.MiddleRight;
-            button2.Location = new Point(14, 418);
+            button2.Location = new Point(96, 440);
             button2.Name = "button2";
-            button2.Size = new Size(310, 78);
+            button2.Size = new Size(455, 78);
             button2.TabIndex = 3;
-            button2.Text = "My Reports  ";
-            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.Text = "        My Reports  ";
             button2.UseVisualStyleBackColor = true;
             // 
             // btnReport
@@ -136,12 +149,11 @@
             btnReport.BackgroundImage = (Image)resources.GetObject("btnReport.BackgroundImage");
             btnReport.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReport.ForeColor = Color.White;
-            btnReport.Location = new Point(14, 334);
+            btnReport.Location = new Point(96, 356);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(310, 78);
+            btnReport.Size = new Size(455, 78);
             btnReport.TabIndex = 1;
-            btnReport.Text = "Report Trash";
-            btnReport.TextAlign = ContentAlignment.MiddleRight;
+            btnReport.Text = "        Report Trash";
             btnReport.UseVisualStyleBackColor = true;
             btnReport.Click += btnReport_Click;
             // 
@@ -149,11 +161,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(93, 289);
+            label1.Location = new Point(251, 305);
             label1.Name = "label1";
-            label1.Size = new Size(113, 23);
+            label1.Size = new Size(144, 28);
             label1.TabIndex = 0;
             label1.Text = "Welcome, !";
             label1.Click += label1_Click;
@@ -164,14 +176,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(mainPanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StudentDashboard";
             Text = "StudentDashboard";
             WindowState = FormWindowState.Maximized;
             mainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
@@ -179,13 +193,14 @@
         #endregion
 
         private Panel mainPanel;
-        private Label label1;
-        private Button btnReport;
-        private Button btnBack;
-        private PictureBox pictureBox1;
         private Panel panel1;
         private Panel panel2;
-        private Button button2;
         private PictureBox pictureBox2;
+        private Button btnBack;
+        private Button button2;
+        private Button btnReport;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
     }
 }

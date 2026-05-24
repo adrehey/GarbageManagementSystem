@@ -128,5 +128,17 @@ namespace GarbageManagementSystem
         {
 
         }
+
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+                if (chkShowPassword.Checked) 
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }
