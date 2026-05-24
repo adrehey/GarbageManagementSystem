@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("GarbageManagementSystem")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MyReportsPage.cs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89bef2fd3c76775fe06182666fa1a130d93df8b5")]
-[assembly: System.Reflection.AssemblyProductAttribute("GarbageManagementSystem")]
-[assembly: System.Reflection.AssemblyTitleAttribute("GarbageManagementSystem")]
+[assembly: System.Reflection.AssemblyProductAttribute("MyReportsPage.cs")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MyReportsPage.cs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
