@@ -202,7 +202,7 @@
             panel2.Location = new Point(743, 247);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(418, 111);
+            panel2.Size = new Size(418, 124);
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
@@ -210,7 +210,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(140, 5);
+            pictureBox1.Location = new Point(133, 12);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(158, 100);
