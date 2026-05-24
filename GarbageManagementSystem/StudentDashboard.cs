@@ -39,9 +39,7 @@ namespace GarbageManagementSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            LogInPage login = new LogInPage();
-            login.Show();
-            this.Hide();
+           Application.Exit();
         }
 
         private void label1_Click(object sender, EventArgs e)

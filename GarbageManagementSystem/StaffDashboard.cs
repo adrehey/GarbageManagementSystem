@@ -20,7 +20,7 @@ namespace GarbageManagementSystem
             Username = user;
         }
 
-        private void StaffDashboard_Load(object sender, EventArgs e)
+        private void StaffDashboard_Load(object? sender, EventArgs e)
         {
             SetupGrid();
 

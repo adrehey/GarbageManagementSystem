@@ -34,19 +34,19 @@
             btnGym = new Button();
             btnCafeteria = new Button();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            btnTable = new Button();
+            btnGrotto = new Button();
+            btnBo = new Button();
+            btnRegistrar = new Button();
+            btnCottage = new Button();
+            btnCaf2 = new Button();
             btnITCenter = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            button11 = new Button();
-            button12 = new Button();
+            btnTower = new Button();
+            btnNb2 = new Button();
+            btnNb3 = new Button();
+            btnNb4 = new Button();
+            btnCas1 = new Button();
+            btnCas2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -112,77 +112,83 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnTable
             // 
-            button1.BackColor = Color.IndianRed;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(855, 249);
-            button1.Name = "button1";
-            button1.Size = new Size(84, 52);
-            button1.TabIndex = 9;
-            button1.Text = "Round Table";
-            button1.UseVisualStyleBackColor = false;
+            btnTable.BackColor = Color.IndianRed;
+            btnTable.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTable.ForeColor = Color.Transparent;
+            btnTable.Location = new Point(855, 249);
+            btnTable.Name = "btnTable";
+            btnTable.Size = new Size(84, 52);
+            btnTable.TabIndex = 9;
+            btnTable.Text = "Round Table";
+            btnTable.UseVisualStyleBackColor = false;
+            btnTable.Click += btnTable_Click;
             // 
-            // button2
+            // btnGrotto
             // 
-            button2.BackColor = Color.IndianRed;
-            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Transparent;
-            button2.Location = new Point(1196, 104);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 48);
-            button2.TabIndex = 10;
-            button2.Text = "Grotto";
-            button2.UseVisualStyleBackColor = false;
+            btnGrotto.BackColor = Color.IndianRed;
+            btnGrotto.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGrotto.ForeColor = Color.Transparent;
+            btnGrotto.Location = new Point(1196, 104);
+            btnGrotto.Name = "btnGrotto";
+            btnGrotto.Size = new Size(75, 48);
+            btnGrotto.TabIndex = 10;
+            btnGrotto.Text = "Grotto";
+            btnGrotto.UseVisualStyleBackColor = false;
+            btnGrotto.Click += btnGrotto_Click;
             // 
-            // button3
+            // btnBo
             // 
-            button3.BackColor = Color.IndianRed;
-            button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.Transparent;
-            button3.Location = new Point(1279, 275);
-            button3.Name = "button3";
-            button3.Size = new Size(84, 52);
-            button3.TabIndex = 11;
-            button3.Text = "BO";
-            button3.UseVisualStyleBackColor = false;
+            btnBo.BackColor = Color.IndianRed;
+            btnBo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBo.ForeColor = Color.Transparent;
+            btnBo.Location = new Point(1279, 275);
+            btnBo.Name = "btnBo";
+            btnBo.Size = new Size(84, 52);
+            btnBo.TabIndex = 11;
+            btnBo.Text = "BO";
+            btnBo.UseVisualStyleBackColor = false;
+            btnBo.Click += btnBo_Click;
             // 
-            // button4
+            // btnRegistrar
             // 
-            button4.BackColor = Color.IndianRed;
-            button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.Transparent;
-            button4.Location = new Point(1196, 342);
-            button4.Name = "button4";
-            button4.Size = new Size(84, 52);
-            button4.TabIndex = 12;
-            button4.Text = "Registrar";
-            button4.UseVisualStyleBackColor = false;
+            btnRegistrar.BackColor = Color.IndianRed;
+            btnRegistrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRegistrar.ForeColor = Color.Transparent;
+            btnRegistrar.Location = new Point(1196, 342);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(84, 52);
+            btnRegistrar.TabIndex = 12;
+            btnRegistrar.Text = "Registrar";
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
-            // button5
+            // btnCottage
             // 
-            button5.BackColor = Color.IndianRed;
-            button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Transparent;
-            button5.Location = new Point(754, 494);
-            button5.Name = "button5";
-            button5.Size = new Size(84, 52);
-            button5.TabIndex = 13;
-            button5.Text = "Cottage";
-            button5.UseVisualStyleBackColor = false;
+            btnCottage.BackColor = Color.IndianRed;
+            btnCottage.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCottage.ForeColor = Color.Transparent;
+            btnCottage.Location = new Point(754, 494);
+            btnCottage.Name = "btnCottage";
+            btnCottage.Size = new Size(84, 52);
+            btnCottage.TabIndex = 13;
+            btnCottage.Text = "Cottage";
+            btnCottage.UseVisualStyleBackColor = false;
+            btnCottage.Click += btnCottage_Click;
             // 
-            // button6
+            // btnCaf2
             // 
-            button6.BackColor = Color.IndianRed;
-            button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = Color.Transparent;
-            button6.Location = new Point(535, 917);
-            button6.Name = "button6";
-            button6.Size = new Size(84, 52);
-            button6.TabIndex = 14;
-            button6.Text = "Cafeteria 2";
-            button6.UseVisualStyleBackColor = false;
+            btnCaf2.BackColor = Color.IndianRed;
+            btnCaf2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCaf2.ForeColor = Color.Transparent;
+            btnCaf2.Location = new Point(535, 917);
+            btnCaf2.Name = "btnCaf2";
+            btnCaf2.Size = new Size(84, 52);
+            btnCaf2.TabIndex = 14;
+            btnCaf2.Text = "Cafeteria 2";
+            btnCaf2.UseVisualStyleBackColor = false;
+            btnCaf2.Click += btnCaf2_Click;
             // 
             // btnITCenter
             // 
@@ -197,95 +203,101 @@
             btnITCenter.UseVisualStyleBackColor = false;
             btnITCenter.Click += btnITCenter_Click;
             // 
-            // button7
+            // btnTower
             // 
-            button7.BackColor = Color.IndianRed;
-            button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.Transparent;
-            button7.Location = new Point(593, 181);
-            button7.Name = "button7";
-            button7.Size = new Size(84, 52);
-            button7.TabIndex = 15;
-            button7.Text = "Water Tower";
-            button7.UseVisualStyleBackColor = false;
+            btnTower.BackColor = Color.IndianRed;
+            btnTower.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTower.ForeColor = Color.Transparent;
+            btnTower.Location = new Point(593, 181);
+            btnTower.Name = "btnTower";
+            btnTower.Size = new Size(84, 52);
+            btnTower.TabIndex = 15;
+            btnTower.Text = "Water Tower";
+            btnTower.UseVisualStyleBackColor = false;
+            btnTower.Click += btnTower_Click;
             // 
-            // button8
+            // btnNb2
             // 
-            button8.BackColor = Color.IndianRed;
-            button8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.Transparent;
-            button8.Location = new Point(109, 658);
-            button8.Name = "button8";
-            button8.Size = new Size(84, 31);
-            button8.TabIndex = 16;
-            button8.Text = "NB CR 2";
-            button8.UseVisualStyleBackColor = false;
+            btnNb2.BackColor = Color.IndianRed;
+            btnNb2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNb2.ForeColor = Color.Transparent;
+            btnNb2.Location = new Point(109, 658);
+            btnNb2.Name = "btnNb2";
+            btnNb2.Size = new Size(84, 31);
+            btnNb2.TabIndex = 16;
+            btnNb2.Text = "NB CR 2";
+            btnNb2.UseVisualStyleBackColor = false;
+            btnNb2.Click += btnNb2_Click;
             // 
-            // button9
+            // btnNb3
             // 
-            button9.BackColor = Color.IndianRed;
-            button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button9.ForeColor = Color.Transparent;
-            button9.Location = new Point(109, 621);
-            button9.Name = "button9";
-            button9.Size = new Size(84, 31);
-            button9.TabIndex = 17;
-            button9.Text = "NB CR 3";
-            button9.UseVisualStyleBackColor = false;
+            btnNb3.BackColor = Color.IndianRed;
+            btnNb3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNb3.ForeColor = Color.Transparent;
+            btnNb3.Location = new Point(109, 621);
+            btnNb3.Name = "btnNb3";
+            btnNb3.Size = new Size(84, 31);
+            btnNb3.TabIndex = 17;
+            btnNb3.Text = "NB CR 3";
+            btnNb3.UseVisualStyleBackColor = false;
+            btnNb3.Click += btnNb3_Click;
             // 
-            // button10
+            // btnNb4
             // 
-            button10.BackColor = Color.IndianRed;
-            button10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.Transparent;
-            button10.Location = new Point(109, 584);
-            button10.Name = "button10";
-            button10.Size = new Size(84, 31);
-            button10.TabIndex = 18;
-            button10.Text = "NB CR 4";
-            button10.UseVisualStyleBackColor = false;
+            btnNb4.BackColor = Color.IndianRed;
+            btnNb4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNb4.ForeColor = Color.Transparent;
+            btnNb4.Location = new Point(109, 584);
+            btnNb4.Name = "btnNb4";
+            btnNb4.Size = new Size(84, 31);
+            btnNb4.TabIndex = 18;
+            btnNb4.Text = "NB CR 4";
+            btnNb4.UseVisualStyleBackColor = false;
+            btnNb4.Click += btnNb4_Click;
             // 
-            // button11
+            // btnCas1
             // 
-            button11.BackColor = Color.IndianRed;
-            button11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.ForeColor = Color.Transparent;
-            button11.Location = new Point(754, 46);
-            button11.Name = "button11";
-            button11.Size = new Size(84, 31);
-            button11.TabIndex = 19;
-            button11.Text = "CAS CR 1";
-            button11.UseVisualStyleBackColor = false;
+            btnCas1.BackColor = Color.IndianRed;
+            btnCas1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCas1.ForeColor = Color.Transparent;
+            btnCas1.Location = new Point(754, 46);
+            btnCas1.Name = "btnCas1";
+            btnCas1.Size = new Size(84, 31);
+            btnCas1.TabIndex = 19;
+            btnCas1.Text = "CAS CR 1";
+            btnCas1.UseVisualStyleBackColor = false;
+            btnCas1.Click += btnCas1_Click;
             // 
-            // button12
+            // btnCas2
             // 
-            button12.BackColor = Color.IndianRed;
-            button12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button12.ForeColor = Color.Transparent;
-            button12.Location = new Point(754, 83);
-            button12.Name = "button12";
-            button12.Size = new Size(84, 31);
-            button12.TabIndex = 20;
-            button12.Text = "CAS CR 2";
-            button12.UseVisualStyleBackColor = false;
+            btnCas2.BackColor = Color.IndianRed;
+            btnCas2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCas2.ForeColor = Color.Transparent;
+            btnCas2.Location = new Point(754, 83);
+            btnCas2.Name = "btnCas2";
+            btnCas2.Size = new Size(84, 31);
+            btnCas2.TabIndex = 20;
+            btnCas2.Text = "CAS CR 2";
+            btnCas2.UseVisualStyleBackColor = false;
+            btnCas2.Click += btnCas2_Click;
             // 
             // ReportControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGreen;
-            Controls.Add(button12);
-            Controls.Add(button11);
-            Controls.Add(button10);
-            Controls.Add(button9);
-            Controls.Add(button8);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnCas2);
+            Controls.Add(btnCas1);
+            Controls.Add(btnNb4);
+            Controls.Add(btnNb3);
+            Controls.Add(btnNb2);
+            Controls.Add(btnTower);
+            Controls.Add(btnCaf2);
+            Controls.Add(btnCottage);
+            Controls.Add(btnRegistrar);
+            Controls.Add(btnBo);
+            Controls.Add(btnGrotto);
+            Controls.Add(btnTable);
             Controls.Add(btnback);
             Controls.Add(btnCafeteria);
             Controls.Add(btnGym);
@@ -304,18 +316,18 @@
         private Button btnGym;
         private Button btnCafeteria;
         private PictureBox pictureBox1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button btnTable;
+        private Button btnGrotto;
+        private Button btnBo;
+        private Button btnRegistrar;
+        private Button btnCottage;
+        private Button btnCaf2;
         private Button btnITCenter;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button10;
-        private Button button11;
-        private Button button12;
+        private Button btnTower;
+        private Button btnNb2;
+        private Button btnNb3;
+        private Button btnNb4;
+        private Button btnCas1;
+        private Button btnCas2;
     }
 }
