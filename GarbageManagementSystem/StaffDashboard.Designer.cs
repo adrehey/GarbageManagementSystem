@@ -126,11 +126,11 @@
             lblUser.BackColor = Color.Transparent;
             lblUser.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUser.ForeColor = Color.White;
-            lblUser.Location = new Point(57, 289);
+            lblUser.Location = new Point(93, 289);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(108, 23);
+            lblUser.Size = new Size(113, 23);
             lblUser.TabIndex = 8;
-            lblUser.Text = "Welcome, ";
+            lblUser.Text = "Welcome, !";
             // 
             // dgvReports
             // 
@@ -144,9 +144,9 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(95, 135);
+            pictureBox1.Location = new Point(79, 92);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(143, 137);
+            pictureBox1.Size = new Size(180, 180);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;

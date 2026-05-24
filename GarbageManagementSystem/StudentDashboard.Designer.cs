@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDashboard));
             mainPanel = new Panel();
             pictureBox1 = new PictureBox();
-            btnBack = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
+            btnBack = new Button();
             button2 = new Button();
             btnReport = new Button();
             label1 = new Label();
-            pictureBox2 = new PictureBox();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -69,20 +69,6 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.Transparent;
-            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
-            btnBack.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(14, 951);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(310, 78);
-            btnBack.TabIndex = 2;
-            btnBack.Text = "Log Out";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
-            // 
             // panel1
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
@@ -106,6 +92,30 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(337, 1041);
             panel2.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(79, 106);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(180, 180);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.Transparent;
+            btnBack.BackgroundImage = (Image)resources.GetObject("btnBack.BackgroundImage");
+            btnBack.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(14, 951);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(310, 78);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Log Out";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // button2
             // 
@@ -147,16 +157,6 @@
             label1.TabIndex = 0;
             label1.Text = "Welcome, !";
             label1.Click += label1_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(83, 112);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(172, 162);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
             // 
             // StudentDashboard
             // 
