@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< Updated upstream
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffDashboard));
             btnMarkCleared = new Button();
             btnViewHistory = new Button();
@@ -41,136 +40,11 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picMap).BeginInit();
-=======
-            components = new System.ComponentModel.Container();
-            dgvReports = new DataGridView();
-            panelTop = new Panel();
-            lblTotal = new Label();
-            lblCompleted = new Label();
-            lblPending = new Label();
-            panelActions = new Panel();
-            btnLog = new Button();
-            btnExit = new Button();
-            btnViewReports = new Button();
-            btnViewHistory = new Button();
-            btnMarkCleared = new Button();
-            lblNewReports = new Label();
-            timerNotify = new System.Windows.Forms.Timer(components);
->>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-<<<<<<< Updated upstream
-=======
-            // dgvReports
-            // 
-            dgvReports.AllowUserToAddRows = false;
-            dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReports.Dock = DockStyle.Fill;
-            dgvReports.Location = new Point(0, 100);
-            dgvReports.Name = "dgvReports";
-            dgvReports.ReadOnly = true;
-            dgvReports.Size = new Size(1156, 448);
-            dgvReports.TabIndex = 0;
-            // 
-            // panelTop
-            // 
-            panelTop.Controls.Add(lblNewReports);
-            panelTop.Controls.Add(lblTotal);
-            panelTop.Controls.Add(lblCompleted);
-            panelTop.Controls.Add(lblPending);
-            panelTop.Dock = DockStyle.Top;
-            panelTop.Location = new Point(0, 0);
-            panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1156, 100);
-            panelTop.TabIndex = 1;
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTotal.Location = new Point(256, 28);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(127, 21);
-            lblTotal.TabIndex = 2;
-            lblTotal.Text = "Total Reports: 0";
-            // 
-            // lblCompleted
-            // 
-            lblCompleted.AutoSize = true;
-            lblCompleted.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblCompleted.Location = new Point(124, 28);
-            lblCompleted.Name = "lblCompleted";
-            lblCompleted.Size = new Size(111, 21);
-            lblCompleted.TabIndex = 1;
-            lblCompleted.Text = "Completed: 0";
-            // 
-            // lblPending
-            // 
-            lblPending.AutoSize = true;
-            lblPending.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblPending.Location = new Point(11, 28);
-            lblPending.Name = "lblPending";
-            lblPending.Size = new Size(91, 21);
-            lblPending.TabIndex = 0;
-            lblPending.Text = "Pending: 0";
-            // 
-            // panelActions
-            // 
-            panelActions.Controls.Add(btnLog);
-            panelActions.Controls.Add(btnExit);
-            panelActions.Controls.Add(btnViewReports);
-            panelActions.Controls.Add(btnViewHistory);
-            panelActions.Controls.Add(btnMarkCleared);
-            panelActions.Dock = DockStyle.Bottom;
-            panelActions.Location = new Point(0, 548);
-            panelActions.Name = "panelActions";
-            panelActions.Size = new Size(1156, 100);
-            panelActions.TabIndex = 0;
-            // 
-            // btnLog
-            // 
-            btnLog.Location = new Point(618, 35);
-            btnLog.Name = "btnLog";
-            btnLog.Size = new Size(101, 23);
-            btnLog.TabIndex = 4;
-            btnLog.Text = "Back to login";
-            btnLog.UseVisualStyleBackColor = true;
-            btnLog.Click += btnLog_Click;
-            // 
-            // btnExit
-            // 
-            btnExit.Location = new Point(447, 26);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(120, 40);
-            btnExit.TabIndex = 3;
-            btnExit.Text = "Exit system";
-            btnExit.UseVisualStyleBackColor = true;
-            btnExit.Click += btnExit_Click;
-            // 
-            // btnViewReports
-            // 
-            btnViewReports.Location = new Point(312, 26);
-            btnViewReports.Name = "btnViewReports";
-            btnViewReports.Size = new Size(120, 40);
-            btnViewReports.TabIndex = 2;
-            btnViewReports.Text = "View active reports";
-            btnViewReports.UseVisualStyleBackColor = true;
-            btnViewReports.Click += btnViewReports_Click;
-            // 
-            // btnViewHistory
-            // 
-            btnViewHistory.Location = new Point(186, 26);
-            btnViewHistory.Name = "btnViewHistory";
-            btnViewHistory.Size = new Size(120, 40);
-            btnViewHistory.TabIndex = 1;
-            btnViewHistory.Text = "View History";
-            btnViewHistory.UseVisualStyleBackColor = true;
-            btnViewHistory.Click += btnViewHistory_Click;
-            // 
->>>>>>> Stashed changes
             // btnMarkCleared
             // 
             btnMarkCleared.BackgroundImage = (Image)resources.GetObject("btnMarkCleared.BackgroundImage");
@@ -184,7 +58,6 @@
             btnMarkCleared.UseVisualStyleBackColor = true;
             btnMarkCleared.Click += btnMarkCleared_Click;
             // 
-<<<<<<< Updated upstream
             // btnViewHistory
             // 
             btnViewHistory.BackgroundImage = (Image)resources.GetObject("btnViewHistory.BackgroundImage");
@@ -289,16 +162,6 @@
             pictureBox2.TabIndex = 11;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
-=======
-            // lblNewReports
-            // 
-            lblNewReports.AutoSize = true;
-            lblNewReports.Location = new Point(622, 35);
-            lblNewReports.Name = "lblNewReports";
-            lblNewReports.Size = new Size(77, 15);
-            lblNewReports.TabIndex = 3;
-            lblNewReports.Text = "New Reports:";
->>>>>>> Stashed changes
             // 
             // StaffDashboard
             // 
@@ -332,7 +195,6 @@
         private Button btnMarkCleared;
         private Button btnViewHistory;
         private Button btnViewReports;
-<<<<<<< Updated upstream
         private PictureBox picMap;
         private Button btnOut;
         private Button btnShowMap;
@@ -340,14 +202,5 @@
         private DataGridView dgvReports;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-=======
-        private Label lblTotal;
-        private Label lblCompleted;
-        private Label lblPending;
-        private Button btnExit;
-        private Button btnLog;
-        private Label lblNewReports;
-        private System.Windows.Forms.Timer timerNotify;
->>>>>>> Stashed changes
     }
 }
