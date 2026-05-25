@@ -179,6 +179,7 @@
             Controls.Add(btnViewHistory);
             Controls.Add(btnMarkCleared);
             Controls.Add(pictureBox2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StaffDashboard";
             Text = "StaffDashboard";
             WindowState = FormWindowState.Maximized;

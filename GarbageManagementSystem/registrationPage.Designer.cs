@@ -33,7 +33,6 @@
             txtPassword = new TextBox();
             btnRegister = new Button();
             btnback = new Button();
-            cmbRole = new ComboBox();
             txtStudentID = new TextBox();
             panel1 = new Panel();
             label2 = new Label();
@@ -50,7 +49,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(86, 216);
+            txtUsername.Location = new Point(86, 244);
             txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Username";
@@ -59,7 +58,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(86, 341);
+            txtPassword.Location = new Point(86, 369);
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "Password";
@@ -71,7 +70,7 @@
             // 
             btnRegister.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.Green;
-            btnRegister.Location = new Point(85, 453);
+            btnRegister.Location = new Point(85, 422);
             btnRegister.Margin = new Padding(3, 2, 3, 2);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(327, 53);
@@ -82,7 +81,9 @@
             // 
             // btnback
             // 
-            btnback.Location = new Point(308, 515);
+            btnback.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnback.ForeColor = Color.Green;
+            btnback.Location = new Point(308, 484);
             btnback.Margin = new Padding(3, 2, 3, 2);
             btnback.Name = "btnback";
             btnback.Size = new Size(103, 28);
@@ -90,20 +91,9 @@
             btnback.Text = "Back to login";
             btnback.Click += btnback_Click;
             // 
-            // cmbRole
-            // 
-            cmbRole.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbRole.FormattingEnabled = true;
-            cmbRole.Items.AddRange(new object[] { "Staff ", "Student " });
-            cmbRole.Location = new Point(85, 400);
-            cmbRole.Margin = new Padding(3, 2, 3, 2);
-            cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(103, 24);
-            cmbRole.TabIndex = 4;
-            // 
             // txtStudentID
             // 
-            txtStudentID.Location = new Point(85, 281);
+            txtStudentID.Location = new Point(85, 309);
             txtStudentID.Name = "txtStudentID";
             txtStudentID.PlaceholderText = "School ID";
             txtStudentID.Size = new Size(326, 23);
@@ -119,7 +109,6 @@
             panel1.Controls.Add(btnRegister);
             panel1.Controls.Add(txtStudentID);
             panel1.Controls.Add(btnback);
-            panel1.Controls.Add(cmbRole);
             panel1.Controls.Add(txtPassword);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(txtUsername);
@@ -137,7 +126,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Green;
-            label2.Location = new Point(84, 518);
+            label2.Location = new Point(84, 487);
             label2.Name = "label2";
             label2.Size = new Size(218, 19);
             label2.TabIndex = 17;
@@ -149,7 +138,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Green;
-            label1.Location = new Point(85, 316);
+            label1.Location = new Point(85, 344);
             label1.Name = "label1";
             label1.Size = new Size(153, 23);
             label1.TabIndex = 16;
@@ -161,7 +150,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Green;
-            label5.Location = new Point(85, 255);
+            label5.Location = new Point(85, 283);
             label5.Name = "label5";
             label5.Size = new Size(150, 23);
             label5.TabIndex = 7;
@@ -173,7 +162,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Green;
-            label4.Location = new Point(86, 191);
+            label4.Location = new Point(86, 219);
             label4.Name = "label4";
             label4.Size = new Size(158, 23);
             label4.TabIndex = 6;
@@ -184,7 +173,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Century Gothic", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Green;
-            label3.Location = new Point(86, 117);
+            label3.Location = new Point(86, 155);
             label3.Name = "label3";
             label3.Size = new Size(309, 54);
             label3.TabIndex = 0;
@@ -199,14 +188,14 @@
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(713, 197);
             panel2.Name = "panel2";
-            panel2.Size = new Size(478, 148);
+            panel2.Size = new Size(478, 187);
             panel2.TabIndex = 7;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(151, 9);
+            pictureBox1.Location = new Point(151, 51);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(181, 133);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -240,7 +229,6 @@
         private TextBox txtPassword;
         private Button btnRegister;
         private Button btnback;
-        private ComboBox cmbRole;
         private TextBox txtStudentID;
         private Panel panel1;
         private Label label5;

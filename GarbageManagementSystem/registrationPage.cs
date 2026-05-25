@@ -9,6 +9,7 @@ namespace GarbageManagementSystem
     {
         public registrationPage()
         {
+            // Debug 1: Removed GetTxtUsername1()
             InitializeComponent();
         }
 
@@ -17,10 +18,10 @@ namespace GarbageManagementSystem
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
             string studentID = txtStudentID.Text.Trim();
-            string role = cmbRole.Text.Trim();
+            // Debug 2: Removed cmbRole reference
 
-
-            if (username == "" || password == "" || studentID == "" || role == "")
+            // Debug 3: Removed role from empty check
+            if (username == "" || password == "" || studentID == "")
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
@@ -28,14 +29,12 @@ namespace GarbageManagementSystem
 
             string filePath = "users.txt";
 
-
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();
             }
 
             string[] users = File.ReadAllLines(filePath);
-
 
             foreach (string user in users)
             {
@@ -51,8 +50,8 @@ namespace GarbageManagementSystem
                 }
             }
 
-
-            string userData = username + "," + password + "," + role + "," + studentID;
+            // Debug 4: Removed role from the save string
+            string userData = username + "," + password + "," + studentID;
 
             File.AppendAllText(filePath, userData + Environment.NewLine);
 
@@ -61,7 +60,7 @@ namespace GarbageManagementSystem
             txtUsername.Clear();
             txtPassword.Clear();
             txtStudentID.Clear();
-            cmbRole.SelectedIndex = -1;
+            // Debug 5: Removed cmbRole reset
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -70,7 +69,6 @@ namespace GarbageManagementSystem
             login.Show();
             this.Hide();
         }
-
 
         private void txtStudentID_TextChanged(object sender, EventArgs e) { }
 

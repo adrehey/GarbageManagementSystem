@@ -39,7 +39,7 @@ namespace GarbageManagementSystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-           Application.Exit();
+            Application.Exit();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -55,6 +55,13 @@ namespace GarbageManagementSystem
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UserReports reportsPage = new UserReports();
+            reportsPage.Show();
+            this.Hide();
         }
     }
 }

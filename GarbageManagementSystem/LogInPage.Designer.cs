@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -35,8 +37,7 @@
             linkLabel2 = new LinkLabel();
             label6 = new Label();
             btnLogin = new Button();
-            linkLabel1 = new LinkLabel();
-            checkBox1 = new CheckBox();
+            chkShowPassword = new CheckBox();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -56,8 +57,7 @@
             panel1.Controls.Add(linkLabel2);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(chkShowPassword);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
@@ -71,18 +71,21 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(67, 306);
+            txtPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.Location = new Point(67, 293);
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(285, 23);
+            txtPassword.Size = new Size(285, 25);
             txtPassword.TabIndex = 15;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(67, 246);
+            txtUsername.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsername.Location = new Point(67, 233);
             txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(285, 23);
+            txtUsername.Size = new Size(285, 25);
             txtUsername.TabIndex = 0;
             txtUsername.TextChanged += txtUsername_TextChanged;
             // 
@@ -92,7 +95,7 @@
             linkLabel2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkLabel2.LinkBehavior = LinkBehavior.NeverUnderline;
             linkLabel2.LinkColor = Color.Khaki;
-            linkLabel2.Location = new Point(272, 429);
+            linkLabel2.Location = new Point(272, 416);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(63, 19);
             linkLabel2.TabIndex = 14;
@@ -106,7 +109,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Transparent;
-            label6.Location = new Point(94, 429);
+            label6.Location = new Point(94, 416);
             label6.Name = "label6";
             label6.Size = new Size(183, 18);
             label6.TabIndex = 13;
@@ -118,7 +121,7 @@
             btnLogin.BackColor = Color.Ivory;
             btnLogin.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.Green;
-            btnLogin.Location = new Point(67, 381);
+            btnLogin.Location = new Point(67, 368);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(285, 40);
@@ -127,34 +130,20 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // linkLabel1
+            // chkShowPassword
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.BackColor = Color.Transparent;
-            linkLabel1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel1.LinkBehavior = LinkBehavior.NeverUnderline;
-            linkLabel1.LinkColor = Color.Khaki;
-            linkLabel1.Location = new Point(219, 341);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(133, 18);
-            linkLabel1.TabIndex = 11;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Forgot Password?";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.BackColor = Color.Transparent;
-            checkBox1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.ForeColor = Color.Ivory;
-            checkBox1.Location = new Point(67, 340);
-            checkBox1.Margin = new Padding(3, 2, 3, 2);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(137, 22);
-            checkBox1.TabIndex = 10;
-            checkBox1.Text = "Remember me";
-            checkBox1.UseVisualStyleBackColor = false;
+            chkShowPassword.AutoSize = true;
+            chkShowPassword.BackColor = Color.Transparent;
+            chkShowPassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chkShowPassword.ForeColor = Color.Ivory;
+            chkShowPassword.Location = new Point(67, 327);
+            chkShowPassword.Margin = new Padding(3, 2, 3, 2);
+            chkShowPassword.Name = "chkShowPassword";
+            chkShowPassword.Size = new Size(137, 22);
+            chkShowPassword.TabIndex = 10;
+            chkShowPassword.Text = "Show Password";
+            chkShowPassword.UseVisualStyleBackColor = false;
+            chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
             // 
             // label5
             // 
@@ -162,7 +151,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Transparent;
-            label5.Location = new Point(67, 281);
+            label5.Location = new Point(67, 268);
             label5.Name = "label5";
             label5.Size = new Size(101, 23);
             label5.TabIndex = 7;
@@ -174,7 +163,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Transparent;
-            label4.Location = new Point(67, 221);
+            label4.Location = new Point(67, 208);
             label4.Name = "label4";
             label4.Size = new Size(108, 23);
             label4.TabIndex = 6;
@@ -184,13 +173,14 @@
             // label3
             // 
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Century Gothic", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Ivory;
-            label3.Location = new Point(47, 92);
+            label3.Location = new Point(47, 136);
             label3.Name = "label3";
-            label3.Size = new Size(328, 129);
+            label3.Size = new Size(328, 72);
             label3.TabIndex = 0;
             label3.Text = "Log In";
+            label3.TextAlign = ContentAlignment.TopCenter;
             label3.Click += label3_Click;
             // 
             // panel2
@@ -202,7 +192,7 @@
             panel2.Location = new Point(743, 247);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(418, 111);
+            panel2.Size = new Size(418, 124);
             panel2.TabIndex = 3;
             panel2.Paint += panel2_Paint;
             // 
@@ -210,7 +200,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(140, 5);
+            pictureBox1.Location = new Point(133, 12);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(158, 100);
@@ -229,6 +219,7 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "LogInPage";
             StartPosition = FormStartPosition.CenterScreen;
@@ -249,8 +240,7 @@
         private Panel panel2;
         private Label label4;
         private Label label5;
-        private LinkLabel linkLabel1;
-        private CheckBox checkBox1;
+        private CheckBox chkShowPassword;
         private Button btnLogin;
         private LinkLabel linkLabel2;
         private Label label6;
