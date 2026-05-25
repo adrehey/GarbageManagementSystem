@@ -32,13 +32,13 @@
             mainPanel = new Panel();
             panel1 = new Panel();
             panel2 = new Panel();
+            lblWelcome = new Label();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             btnBack = new Button();
             button2 = new Button();
             btnReport = new Button();
-            label1 = new Label();
             mainPanel.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -73,17 +73,26 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.Controls.Add(lblWelcome);
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(btnBack);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(btnReport);
-            panel2.Controls.Add(label1);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(664, 1070);
             panel2.TabIndex = 2;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(288, 316);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(66, 15);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "Welcome, !";
             // 
             // pictureBox3
             // 
@@ -158,19 +167,6 @@
             btnReport.UseVisualStyleBackColor = true;
             btnReport.Click += btnReport_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(251, 305);
-            label1.Name = "label1";
-            label1.Size = new Size(144, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Welcome, !";
-            label1.Click += label1_Click;
-            // 
             // StudentDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -200,8 +196,8 @@
         private Button btnBack;
         private Button button2;
         private Button btnReport;
-        private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
+        private Label lblWelcome;
     }
 }

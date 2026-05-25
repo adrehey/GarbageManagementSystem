@@ -10,9 +10,15 @@ namespace GarbageManagementSystem
 {
     public partial class StudentDashboard : Form
     {
-        public StudentDashboard()
+        private string loggedInUser;
+
+        public StudentDashboard(string username)
         {
             InitializeComponent();
+
+            loggedInUser = username;
+
+            lblWelcome.Text = $"Welcome, {loggedInUser}!";
 
         }
 
