@@ -17,7 +17,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserReports));
             panel1 = new Panel();
             lblTotalReports = new Label();
             label1 = new Label();
@@ -31,6 +30,7 @@
             colDate = new DataGridViewTextBoxColumn();
             colIssue = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
+            btnDash = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -40,6 +40,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FloralWhite;
+            panel1.Controls.Add(btnDash);
             panel1.Controls.Add(lblTotalReports);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 12);
@@ -171,11 +172,20 @@
             colStatus.Name = "colStatus";
             colStatus.ReadOnly = true;
             // 
+            // btnDash
+            // 
+            btnDash.Location = new Point(3, 3);
+            btnDash.Name = "btnDash";
+            btnDash.Size = new Size(75, 23);
+            btnDash.TabIndex = 5;
+            btnDash.Text = "Back";
+            btnDash.UseVisualStyleBackColor = true;
+            btnDash.Click += btnDash_Click;
+            // 
             // UserReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1904, 1041);
             Controls.Add(dgvReports);
             Controls.Add(panel3);
@@ -210,5 +220,6 @@
         private DataGridViewTextBoxColumn colDate;
         private DataGridViewTextBoxColumn colIssue;
         private DataGridViewTextBoxColumn colStatus;
+        private Button btnDash;
     }
 }

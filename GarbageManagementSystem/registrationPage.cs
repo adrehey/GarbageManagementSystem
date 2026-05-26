@@ -1,16 +1,35 @@
 ﻿using System;
-using System.IO;
-using System.Drawing;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace GarbageManagementSystem
 {
     public partial class registrationPage : Form
     {
+        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+
         public registrationPage()
         {
-            // Debug 1: Removed GetTxtUsername1()
             InitializeComponent();
+            CreateTable();
+        }
+
+        private void CreateTable()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"CREATE TABLE IF NOT EXISTS Users (
+                                    Username TEXT PRIMARY KEY,
+                                    Password TEXT NOT NULL,
+                                    StudentID TEXT NOT NULL,
+                                    Role TEXT NOT NULL
+                                )";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -18,63 +37,51 @@ namespace GarbageManagementSystem
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
             string studentID = txtStudentID.Text.Trim();
-            // Debug 2: Removed cmbRole reference
+            string role = "student"; // default role
 
-            // Debug 3: Removed role from empty check
             if (username == "" || password == "" || studentID == "")
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            string filePath = "users.txt";
-
-            if (!File.Exists(filePath))
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
-                File.Create(filePath).Close();
-            }
+                conn.Open();
 
-            string[] users = File.ReadAllLines(filePath);
+                string check = "SELECT COUNT(*) FROM Users WHERE Username=@u";
+                SQLiteCommand checkCmd = new SQLiteCommand(check, conn);
+                checkCmd.Parameters.AddWithValue("@u", username);
 
-            foreach (string user in users)
-            {
-                string[] data = user.Split(',');
+                long exists = (long)checkCmd.ExecuteScalar();
 
-                if (data.Length >= 1)
+                if (exists > 0)
                 {
-                    if (data[0] == username)
-                    {
-                        MessageBox.Show("Username already exists.");
-                        return;
-                    }
+                    MessageBox.Show("Username already exists.");
+                    return;
                 }
+
+                string insert = @"INSERT INTO Users 
+                                (Username, Password, StudentID, Role)
+                                VALUES (@u, @p, @s, @r)";
+
+                SQLiteCommand cmd = new SQLiteCommand(insert, conn);
+                cmd.Parameters.AddWithValue("@u", username);
+                cmd.Parameters.AddWithValue("@p", password);
+                cmd.Parameters.AddWithValue("@s", studentID);
+                cmd.Parameters.AddWithValue("@r", role);
+
+                cmd.ExecuteNonQuery();
             }
-
-            // Debug 4: Removed role from the save string
-            string userData = username + "," + password + "," + studentID;
-
-            File.AppendAllText(filePath, userData + Environment.NewLine);
 
             MessageBox.Show("Registration Successful!");
-
-            txtUsername.Clear();
-            txtPassword.Clear();
-            txtStudentID.Clear();
-            // Debug 5: Removed cmbRole reset
         }
 
-        private void btnback_Click(object sender, EventArgs e)
+        private void btnbackToLog_Click(object sender, EventArgs e)
         {
             LogInPage login = new LogInPage();
             login.Show();
             this.Hide();
-        }
-
-        private void txtStudentID_TextChanged(object sender, EventArgs e) { }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

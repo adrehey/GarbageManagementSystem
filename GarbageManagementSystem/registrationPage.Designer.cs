@@ -32,7 +32,7 @@
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             btnRegister = new Button();
-            btnback = new Button();
+            btnbackToLog = new Button();
             txtStudentID = new TextBox();
             panel1 = new Panel();
             label2 = new Label();
@@ -79,17 +79,17 @@
             btnRegister.UseVisualStyleBackColor = true;
             btnRegister.Click += btnRegister_Click;
             // 
-            // btnback
+            // btnbackToLog
             // 
-            btnback.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnback.ForeColor = Color.Green;
-            btnback.Location = new Point(308, 484);
-            btnback.Margin = new Padding(3, 2, 3, 2);
-            btnback.Name = "btnback";
-            btnback.Size = new Size(103, 28);
-            btnback.TabIndex = 0;
-            btnback.Text = "Back to login";
-            btnback.Click += btnback_Click;
+            btnbackToLog.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnbackToLog.ForeColor = Color.Green;
+            btnbackToLog.Location = new Point(308, 484);
+            btnbackToLog.Margin = new Padding(3, 2, 3, 2);
+            btnbackToLog.Name = "btnbackToLog";
+            btnbackToLog.Size = new Size(103, 28);
+            btnbackToLog.TabIndex = 0;
+            btnbackToLog.Text = "Back to login";
+            btnbackToLog.Click += btnbackToLog_Click;
             // 
             // txtStudentID
             // 
@@ -98,7 +98,6 @@
             txtStudentID.PlaceholderText = "School ID";
             txtStudentID.Size = new Size(326, 23);
             txtStudentID.TabIndex = 5;
-            txtStudentID.TextChanged += txtStudentID_TextChanged;
             // 
             // panel1
             // 
@@ -108,7 +107,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnRegister);
             panel1.Controls.Add(txtStudentID);
-            panel1.Controls.Add(btnback);
+            panel1.Controls.Add(btnbackToLog);
             panel1.Controls.Add(txtPassword);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(txtUsername);
@@ -178,7 +177,6 @@
             label3.Size = new Size(309, 54);
             label3.TabIndex = 0;
             label3.Text = "Registration Page";
-            label3.Click += label3_Click;
             // 
             // panel2
             // 
@@ -228,7 +226,7 @@
         private TextBox txtUsername;
         private TextBox txtPassword;
         private Button btnRegister;
-        private Button btnback;
+        private Button btnbackToLog;
         private TextBox txtStudentID;
         private Panel panel1;
         private Label label5;

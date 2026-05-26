@@ -42,7 +42,8 @@ namespace GarbageManagementSystem
 
             foreach (DataGridViewRow row in dgvReports.Rows)
             {
-                if (row.Cells[2].Value != null && row.Cells[2].Value.ToString() == "Resolved")
+                // The ?. operator safely checks for null before calling ToString()
+                if (row.Cells[2].Value?.ToString() == "Resolved")
                 {
                     successfulCleanups++;
                 }
@@ -67,6 +68,13 @@ namespace GarbageManagementSystem
                 lblEcoRank.Text = "Novice 🌱";
                 lblEcoRank.ForeColor = Color.DarkGreen;
             }
+        }
+
+        private void btnDash_Click(object sender, EventArgs e)
+        {
+            StudentDashboard dashboard = new StudentDashboard(LoggedInUser.Name);
+            dashboard.Show();
+            this.Close();
         }
     }
 }

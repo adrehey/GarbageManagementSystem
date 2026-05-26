@@ -1,144 +1,86 @@
-using System.ComponentModel.DataAnnotations;
-using System.IO;
+using System;
+using System.Data.SQLite;
+using System.Windows.Forms;
+
 namespace GarbageManagementSystem
 {
     public partial class LogInPage : Form
     {
+        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+
         public LogInPage()
         {
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            registrationPage reg = new registrationPage();
-            reg.Show();
-
-            this.Hide();
-        }
-
-        private void linkLabel2_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            registrationPage reg = new registrationPage();
-            reg.Show();
-
-            this.Hide();
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            // CHANGED: Reading the ID instead of a username from the input box
+            string studentIdInput = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
-            string filePath = "users.txt";
-
-            if (!File.Exists(filePath))
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
+                conn.Open();
 
-                MessageBox.Show("No registered users found");
-                return;
+                // CHANGED: Query now looks for StudentID=@id instead of Username=@u
+                string query = @"SELECT Username, StudentID, Role 
+                                 FROM Users 
+                                 WHERE StudentID=@id AND Password=@p";
 
+                SQLiteCommand cmd = new SQLiteCommand(query, conn);
+                // CHANGED: Passing the student ID parameter
+                cmd.Parameters.AddWithValue("@id", studentIdInput);
+                cmd.Parameters.AddWithValue("@p", password);
 
-            }
-            string[] users = File.ReadAllLines(filePath);
+                SQLiteDataReader reader = cmd.ExecuteReader();
 
-            foreach (string user in users)
-            {
-                string[] data = user.Split(',');
-
-                if (data.Length < 4)
-                    continue;
-
-                string storedUsername = data[0];
-                string storedPassword = data[1];
-                string role = data[2].Trim();
-                string storedID = data[3];
-
-                if (username == storedUsername && password == storedPassword)
+                if (reader.Read())
                 {
-                    LoggedInUser.Name = storedUsername;
-                    LoggedInUser.ID = storedID;
+                    // Use the null-coalescing operator (??) to provide a fallback empty string if the database value is null
+                    string user = reader["Username"]?.ToString() ?? "";
+                    string id = reader["StudentID"]?.ToString() ?? "";
+                    string role = reader["Role"]?.ToString()?.Trim() ?? "";
 
-                    if (role.Trim().ToLower() == "student")
+                    LoggedInUser.Name = user;
+                    LoggedInUser.ID = id;
+
+                    MessageBox.Show("Login Successful!");
+
+                    // FIXED ROLE CHECK (case-insensitive)
+                    if (role.Equals("staff", StringComparison.OrdinalIgnoreCase))
                     {
-                        StudentDashboard student = new StudentDashboard();
-                        student.Show();
-                        this.Hide();
-                    }
-                    else if (role.Trim().ToLower() == "staff")
-                    {
-                        StaffDashboard staff = new StaffDashboard(username);
+                        StaffDashboard staff = new StaffDashboard(user);
                         staff.Show();
-                        this.Hide();
+                    }
+                    else
+                    {
+                        // Your dashboard still receives the 'user' (Name) string here,
+                        // so your "Welcome (username)" feature will still work perfectly!
+                        StudentDashboard student = new StudentDashboard(user);
+                        student.Show();
                     }
 
-                    return;
+                    this.Hide();
+                }
+                else
+                {
+                    // CHANGED: Updated the error message to reflect the ID login change
+                    MessageBox.Show("Invalid Student ID or password.");
                 }
             }
-            MessageBox.Show("Invalid username or password");
         }
 
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
+        private void linkSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            registrationPage reg = new registrationPage();
+            reg.Show();
+            this.Hide();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void LogInPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-                if (chkShowPassword.Checked) 
-            {
-                txtPassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtPassword.UseSystemPasswordChar = true;
-            }
+            txtPassword.UseSystemPasswordChar = !chkShowPass.Checked;
         }
     }
 }

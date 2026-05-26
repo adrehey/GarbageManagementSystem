@@ -131,6 +131,7 @@
             lblUser.Size = new Size(113, 23);
             lblUser.TabIndex = 8;
             lblUser.Text = "Welcome, !";
+            lblUser.Click += lblUser_Click;
             // 
             // dgvReports
             // 

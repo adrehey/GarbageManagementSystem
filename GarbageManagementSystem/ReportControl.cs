@@ -119,7 +119,7 @@ namespace GarbageManagementSystem
 
         private void btnback_Click_1(object? sender, EventArgs e)
         {
-            StudentDashboard dash = new StudentDashboard();
+            StudentDashboard dash = new StudentDashboard(LoggedInUser.Name);
             dash.Show();
 
             var parentForm = this.FindForm();

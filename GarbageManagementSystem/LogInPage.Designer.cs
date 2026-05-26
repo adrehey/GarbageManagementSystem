@@ -34,10 +34,10 @@
             panel1 = new Panel();
             txtPassword = new TextBox();
             txtUsername = new TextBox();
-            linkLabel2 = new LinkLabel();
+            linkSignUp = new LinkLabel();
             label6 = new Label();
             btnLogin = new Button();
-            chkShowPassword = new CheckBox();
+            chkShowPass = new CheckBox();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -54,10 +54,10 @@
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.Controls.Add(txtPassword);
             panel1.Controls.Add(txtUsername);
-            panel1.Controls.Add(linkLabel2);
+            panel1.Controls.Add(linkSignUp);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(chkShowPassword);
+            panel1.Controls.Add(chkShowPass);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
@@ -67,7 +67,6 @@
             panel1.Padding = new Padding(8);
             panel1.Size = new Size(418, 513);
             panel1.TabIndex = 2;
-            panel1.Paint += panel1_Paint;
             // 
             // txtPassword
             // 
@@ -87,21 +86,20 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(285, 25);
             txtUsername.TabIndex = 0;
-            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
-            // linkLabel2
+            // linkSignUp
             // 
-            linkLabel2.BackColor = Color.Transparent;
-            linkLabel2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel2.LinkBehavior = LinkBehavior.NeverUnderline;
-            linkLabel2.LinkColor = Color.Khaki;
-            linkLabel2.Location = new Point(272, 416);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(63, 19);
-            linkLabel2.TabIndex = 14;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "Sign Up";
-            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            linkSignUp.BackColor = Color.Transparent;
+            linkSignUp.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkSignUp.LinkBehavior = LinkBehavior.NeverUnderline;
+            linkSignUp.LinkColor = Color.Khaki;
+            linkSignUp.Location = new Point(272, 416);
+            linkSignUp.Name = "linkSignUp";
+            linkSignUp.Size = new Size(63, 19);
+            linkSignUp.TabIndex = 14;
+            linkSignUp.TabStop = true;
+            linkSignUp.Text = "Sign Up";
+            linkSignUp.LinkClicked += linkSignUp_LinkClicked;
             // 
             // label6
             // 
@@ -114,7 +112,6 @@
             label6.Size = new Size(183, 18);
             label6.TabIndex = 13;
             label6.Text = "Don't have an account?";
-            label6.Click += label6_Click_1;
             // 
             // btnLogin
             // 
@@ -130,20 +127,20 @@
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
-            // chkShowPassword
+            // chkShowPass
             // 
-            chkShowPassword.AutoSize = true;
-            chkShowPassword.BackColor = Color.Transparent;
-            chkShowPassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chkShowPassword.ForeColor = Color.Ivory;
-            chkShowPassword.Location = new Point(67, 327);
-            chkShowPassword.Margin = new Padding(3, 2, 3, 2);
-            chkShowPassword.Name = "chkShowPassword";
-            chkShowPassword.Size = new Size(137, 22);
-            chkShowPassword.TabIndex = 10;
-            chkShowPassword.Text = "Show Password";
-            chkShowPassword.UseVisualStyleBackColor = false;
-            chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
+            chkShowPass.AutoSize = true;
+            chkShowPass.BackColor = Color.Transparent;
+            chkShowPass.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            chkShowPass.ForeColor = Color.Ivory;
+            chkShowPass.Location = new Point(67, 327);
+            chkShowPass.Margin = new Padding(3, 2, 3, 2);
+            chkShowPass.Name = "chkShowPass";
+            chkShowPass.Size = new Size(137, 22);
+            chkShowPass.TabIndex = 10;
+            chkShowPass.Text = "Show Password";
+            chkShowPass.UseVisualStyleBackColor = false;
+            chkShowPass.CheckedChanged += chkShowPass_CheckedChanged;
             // 
             // label5
             // 
@@ -168,7 +165,6 @@
             label4.Size = new Size(108, 23);
             label4.TabIndex = 6;
             label4.Text = "Username:";
-            label4.Click += label4_Click;
             // 
             // label3
             // 
@@ -181,7 +177,6 @@
             label3.TabIndex = 0;
             label3.Text = "Log In";
             label3.TextAlign = ContentAlignment.TopCenter;
-            label3.Click += label3_Click;
             // 
             // panel2
             // 
@@ -194,7 +189,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(418, 124);
             panel2.TabIndex = 3;
-            panel2.Paint += panel2_Paint;
             // 
             // pictureBox1
             // 
@@ -207,7 +201,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // LogInPage
             // 
@@ -225,7 +218,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EcoTrack";
             WindowState = FormWindowState.Maximized;
-            Load += LogInPage_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -240,9 +232,9 @@
         private Panel panel2;
         private Label label4;
         private Label label5;
-        private CheckBox chkShowPassword;
+        private CheckBox chkShowPass;
         private Button btnLogin;
-        private LinkLabel linkLabel2;
+        private LinkLabel linkSignUp;
         private Label label6;
         private TextBox txtUsername;
         private TextBox txtPassword;
