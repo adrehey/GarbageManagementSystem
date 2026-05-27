@@ -87,10 +87,11 @@
             // 
             // lblWelcome
             // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Location = new Point(288, 316);
+            lblWelcome.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.ForeColor = Color.White;
+            lblWelcome.Location = new Point(267, 313);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(66, 15);
+            lblWelcome.Size = new Size(113, 23);
             lblWelcome.TabIndex = 7;
             lblWelcome.Text = "Welcome, !";
             // 
@@ -180,7 +181,6 @@
             mainPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

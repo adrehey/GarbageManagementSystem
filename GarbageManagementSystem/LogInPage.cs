@@ -66,7 +66,7 @@ namespace GarbageManagementSystem
                 else
                 {
                     // CHANGED: Updated the error message to reflect the ID login change
-                    MessageBox.Show("Invalid Student ID or password.");
+                    MessageBox.Show("Invalid Student ID or Password.");
                 }
             }
         }

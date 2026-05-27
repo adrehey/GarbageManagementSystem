@@ -32,4 +32,3 @@ C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSys
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.pdb
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\ref\GarbageManagementSystem.dll
-C:\Users\Administrator\source\repos\GarbageManagementSystem\GarbageManagementSystem\obj\Debug\net10.0-windows\GarbageManagementSystem.UserReports.resources
