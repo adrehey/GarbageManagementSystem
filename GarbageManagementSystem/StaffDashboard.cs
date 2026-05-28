@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +13,10 @@ namespace GarbageManagementSystem
 
         private bool isUpdating = false;
 
+        // 🔥 TOGGLE FLAGS
+        private bool showingReports = false;
+        private bool showingHistory = false;
+
         public StaffDashboard()
         {
             InitializeComponent();
@@ -24,6 +29,9 @@ namespace GarbageManagementSystem
             EnsureDatabaseTableExists();
 
             SetupGrid();
+
+            dgvReports.Visible = false; // start hidden
+
             LoadReports();
             UpdateStats();
 
@@ -163,6 +171,42 @@ namespace GarbageManagementSystem
                 dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
         }
 
+        // 🔥 TOGGLE ACTIVE REPORTS
+        private void btnViewReports_Click(object sender, EventArgs e)
+        {
+            showingReports = !showingReports;
+
+            if (showingReports)
+            {
+                showingHistory = false;
+                LoadReports();
+            }
+            else
+            {
+                dgvReports.Rows.Clear();
+            }
+
+            dgvReports.Visible = showingReports || showingHistory;
+        }
+
+        // 🔥 TOGGLE HISTORY
+        private void btnViewHistory_Click(object sender, EventArgs e)
+        {
+            showingHistory = !showingHistory;
+
+            if (showingHistory)
+            {
+                showingReports = false;
+                LoadHistory();
+            }
+            else
+            {
+                dgvReports.Rows.Clear();
+            }
+
+            dgvReports.Visible = showingReports || showingHistory;
+        }
+
         // MARK AS COMPLETED
         private void btnMarkCleared_Click(object sender, EventArgs e)
         {
@@ -190,21 +234,11 @@ namespace GarbageManagementSystem
                 }
             }
 
-            LoadReports();
-            UpdateStats();
-        }
+            if (showingReports)
+                LoadReports();
+            else if (showingHistory)
+                LoadHistory();
 
-        // VIEW HISTORY
-        private void btnViewHistory_Click(object sender, EventArgs e)
-        {
-            LoadHistory();
-            UpdateStats();
-        }
-
-        // VIEW ACTIVE REPORTS
-        private void btnViewReports_Click(object sender, EventArgs e)
-        {
-            LoadReports();
             UpdateStats();
         }
 
@@ -229,7 +263,7 @@ namespace GarbageManagementSystem
             }
         }
 
-        // 🔔 NOTIFICATIONS
+        // NOTIFICATIONS
         private void LoadNotifications()
         {
             using (SQLiteConnection con = new SQLiteConnection(connectionString))
@@ -262,7 +296,7 @@ namespace GarbageManagementSystem
             }
         }
 
-        // TIMER (SAFE VERSION)
+        // TIMER
         private void timerNotify_Tick(object sender, EventArgs e)
         {
             if (isUpdating) return;
