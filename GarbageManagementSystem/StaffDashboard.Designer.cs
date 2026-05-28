@@ -182,7 +182,7 @@
             Controls.Add(pictureBox2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StaffDashboard";
-            Text = "StaffDashboard";
+            Text = "EcoTrack";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)picMap).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvReports).EndInit();

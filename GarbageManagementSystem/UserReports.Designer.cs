@@ -17,7 +17,9 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserReports));
             panel1 = new Panel();
+            btnDash = new Button();
             lblTotalReports = new Label();
             label1 = new Label();
             panel2 = new Panel();
@@ -30,7 +32,6 @@
             colDate = new DataGridViewTextBoxColumn();
             colIssue = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
-            btnDash = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -40,6 +41,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FloralWhite;
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.Controls.Add(btnDash);
             panel1.Controls.Add(lblTotalReports);
             panel1.Controls.Add(label1);
@@ -48,9 +50,22 @@
             panel1.Size = new Size(630, 164);
             panel1.TabIndex = 0;
             // 
+            // btnDash
+            // 
+            btnDash.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDash.ForeColor = Color.Green;
+            btnDash.Location = new Point(15, 14);
+            btnDash.Name = "btnDash";
+            btnDash.Size = new Size(88, 38);
+            btnDash.TabIndex = 5;
+            btnDash.Text = "Back";
+            btnDash.UseVisualStyleBackColor = true;
+            btnDash.Click += btnDash_Click;
+            // 
             // lblTotalReports
             // 
             lblTotalReports.AutoSize = true;
+            lblTotalReports.BackColor = Color.Transparent;
             lblTotalReports.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotalReports.ForeColor = Color.FromArgb(0, 64, 0);
             lblTotalReports.Location = new Point(310, 91);
@@ -74,6 +89,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FloralWhite;
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.Controls.Add(lblSuccessCount);
             panel2.Controls.Add(label3);
             panel2.Location = new Point(652, 12);
@@ -108,6 +124,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FloralWhite;
+            panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
             panel3.Controls.Add(lblEcoRank);
             panel3.Controls.Add(label4);
             panel3.Location = new Point(1292, 12);
@@ -143,8 +160,10 @@
             // 
             dgvReports.AllowUserToAddRows = false;
             dgvReports.AllowUserToDeleteRows = false;
+            dgvReports.BackgroundColor = Color.FromArgb(224, 224, 224);
             dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReports.Columns.AddRange(new DataGridViewColumn[] { colDate, colIssue, colStatus });
+            dgvReports.GridColor = Color.White;
             dgvReports.Location = new Point(12, 182);
             dgvReports.Name = "dgvReports";
             dgvReports.ReadOnly = true;
@@ -172,27 +191,19 @@
             colStatus.Name = "colStatus";
             colStatus.ReadOnly = true;
             // 
-            // btnDash
-            // 
-            btnDash.Location = new Point(3, 3);
-            btnDash.Name = "btnDash";
-            btnDash.Size = new Size(75, 23);
-            btnDash.TabIndex = 5;
-            btnDash.Text = "Back";
-            btnDash.UseVisualStyleBackColor = true;
-            btnDash.Click += btnDash_Click;
-            // 
             // UserReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1904, 1041);
             Controls.Add(dgvReports);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "UserReports";
-            Text = "My Reports";
+            Text = "EcoTrack";
             WindowState = FormWindowState.Maximized;
             Load += UserReports_Load;
             panel1.ResumeLayout(false);

@@ -93,7 +93,8 @@
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(113, 23);
             lblWelcome.TabIndex = 7;
-            lblWelcome.Text = "Welcome";
+            lblWelcome.Text = "Welcome!";
+            lblWelcome.Click += lblWelcome_Click;
             // 
             // pictureBox3
             // 
@@ -176,7 +177,7 @@
             Controls.Add(mainPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StudentDashboard";
-            Text = "StudentDashboard";
+            Text = "EcoTrack";
             WindowState = FormWindowState.Maximized;
             mainPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);

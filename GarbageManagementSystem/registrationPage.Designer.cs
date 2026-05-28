@@ -221,9 +221,10 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "registrationPage";
-            Text = "registrationPage";
+            Text = "EcoTrack";
             WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
