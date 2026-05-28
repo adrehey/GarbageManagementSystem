@@ -1,21 +1,62 @@
 using System;
 using System.Data.SQLite;
+using System.IO; // Added for Path support
 using System.Windows.Forms;
 
 namespace GarbageManagementSystem
 {
     public partial class LogInPage : Form
     {
-        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+        // Modified connection string to use full path compatibility
+        private readonly string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;";
 
         public LogInPage()
         {
             InitializeComponent();
+            // Hook up the load event to automatically build your table if it's missing
+            this.Load += LogInPage_Load;
+        }
+
+        private void LogInPage_Load(object? sender, EventArgs e)
+        {
+            EnsureDatabaseTableExists();
+        }
+
+        // ================= AUTO-CREATE TABLE LOGIC =================
+        private void EnsureDatabaseTableExists()
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // This SQL query automatically builds your Reports table blueprint if it isn't there yet
+                    string createTableQuery = @"
+                        CREATE TABLE IF NOT EXISTS Reports (
+                            ReportID INTEGER PRIMARY KEY AUTOINCREMENT,
+                            StudentName TEXT NOT NULL,
+                            StudentID TEXT NOT NULL,
+                            Location TEXT NOT NULL,
+                            BinCode TEXT NOT NULL,
+                            Status TEXT NOT NULL,
+                            ReportTime TEXT NOT NULL
+                        );";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error initializing backend tables: " + ex.Message, "Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // CHANGED: Reading the ID instead of a username from the input box
             string studentIdInput = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
@@ -23,13 +64,11 @@ namespace GarbageManagementSystem
             {
                 conn.Open();
 
-                // CHANGED: Query now looks for StudentID=@id instead of Username=@u
                 string query = @"SELECT Username, StudentID, Role 
                                  FROM Users 
                                  WHERE StudentID=@id AND Password=@p";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, conn);
-                // CHANGED: Passing the student ID parameter
                 cmd.Parameters.AddWithValue("@id", studentIdInput);
                 cmd.Parameters.AddWithValue("@p", password);
 
@@ -37,7 +76,6 @@ namespace GarbageManagementSystem
 
                 if (reader.Read())
                 {
-                    // Use the null-coalescing operator (??) to provide a fallback empty string if the database value is null
                     string user = reader["Username"]?.ToString() ?? "";
                     string id = reader["StudentID"]?.ToString() ?? "";
                     string role = reader["Role"]?.ToString()?.Trim() ?? "";
@@ -47,7 +85,6 @@ namespace GarbageManagementSystem
 
                     MessageBox.Show("Login Successful!");
 
-                    // FIXED ROLE CHECK (case-insensitive)
                     if (role.Equals("staff", StringComparison.OrdinalIgnoreCase))
                     {
                         StaffDashboard staff = new StaffDashboard(user);
@@ -55,8 +92,6 @@ namespace GarbageManagementSystem
                     }
                     else
                     {
-                        // Your dashboard still receives the 'user' (Name) string here,
-                        // so your "Welcome (username)" feature will still work perfectly!
                         StudentDashboard student = new StudentDashboard(user);
                         student.Show();
                     }
@@ -65,7 +100,6 @@ namespace GarbageManagementSystem
                 }
                 else
                 {
-                    // CHANGED: Updated the error message to reflect the ID login change
                     MessageBox.Show("Invalid Student ID or Password.");
                 }
             }

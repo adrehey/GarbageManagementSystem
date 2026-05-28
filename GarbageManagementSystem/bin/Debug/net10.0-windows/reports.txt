@@ -19,5 +19,9 @@ Andrhey,2011-0470,IT Center,BIN - 01,Completed,05/25/2026 02:10
 Andrhey,2011-0470,Cottage,BIN - 09,Completed,05/25/2026 02:10
 Andrhey,2011-0470,CAS 2,BIN - 13,Completed,05/25/2026 02:10
 Andrhey,2011-0470,CAS 1,BIN - 12,Completed,05/25/2026 02:10
-nic,0000,CAS 2,BIN - 13,Pending,05/25/2026 14:51
-coco,8998,Tower,BIN - 11,Pending,05/29/2026 00:04
+nic,0000,CAS 2,BIN - 13,Completed,05/25/2026 14:51
+coco,8998,Tower,BIN - 11,Completed,05/29/2026 00:04
+nico,000,Cottage,BIN - 09,Completed,05/29/2026 00:30
+nico,000,BO,BIN - 15,Completed,05/29/2026 00:30
+nico,000,NB CR 1,BIN - 03,Completed,05/29/2026 00:33
+nico,000,Cafeteria 2,BIN - 08,Completed,05/29/2026 00:33

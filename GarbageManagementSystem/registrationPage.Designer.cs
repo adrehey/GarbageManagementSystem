@@ -13,24 +13,7 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         /// 
 
-        private void InitializeComponent()
-        {
-            // 
-            // chkShowPass
-            // 
-            chkShowPass.AutoSize = true;
-            chkShowPass.BackColor = Color.Transparent;
-            chkShowPass.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chkShowPass.ForeColor = Color.Ivory;
-            chkShowPass.Location = new Point(67, 327);
-            chkShowPass.Margin = new Padding(3, 2, 3, 2);
-            chkShowPass.Name = "chkShowPass";
-            chkShowPass.Size = new Size(137, 22);
-            chkShowPass.TabIndex = 10;
-            chkShowPass.Text = "Show Password";
-            chkShowPass.UseVisualStyleBackColor = false;
-            chkShowPass.CheckedChanged += chkShowPass_CheckedChanged;
-        }
+      
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -62,7 +45,7 @@
             label3 = new Label();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            checkBox1 = new CheckBox();
+            chkShowPass = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -257,5 +240,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Label label2;
+        private System.Windows.Forms.CheckBox chkShowPass;
     }
 }

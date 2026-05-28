@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Data;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
+using System.Data.SQLite; // Ensure you have installed the System.Data.SQLite NuGet package
 
 namespace GarbageManagementSystem
 {
     public partial class StaffDashboard : Form
     {
         private string Username;
-
         private bool showingReports = false;
         private bool showingHistory = false;
+
+        // Connection string pointing directly to your garbage.db
+        private string connString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;";
 
         public StaffDashboard(string user)
         {
@@ -28,18 +31,6 @@ namespace GarbageManagementSystem
             picMap.Visible = false;
 
             lblUser.Text = $"Welcome, {Username} 👋";
-
-            EnsureHistoryFile();
-        }
-
-        private void EnsureHistoryFile()
-        {
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
-
-            if (!File.Exists(historyPath))
-            {
-                File.Create(historyPath).Close();
-            }
         }
 
         private void SetupGrid()
@@ -61,91 +52,88 @@ namespace GarbageManagementSystem
             dgvReports.Columns.Add("Time", "Time");
         }
 
-        // ================= ACTIVE REPORTS =================
+        // ================= ACTIVE REPORTS FROM DATABASE =================
         private void LoadReports()
         {
-            string path = Path.Combine(Application.StartupPath, "reports.txt");
-
             dgvReports.Rows.Clear();
 
-            if (!File.Exists(path))
+            try
             {
-                MessageBox.Show("reports.txt not found");
-                return;
-            }
-
-            foreach (string line in File.ReadAllLines(path))
-            {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-
-                string[] data = line.Split(',')
-                                    .Select(x => x.Trim())
-                                    .ToArray();
-
-                if (data.Length == 6)
+                using (SQLiteConnection conn = new SQLiteConnection(connString))
                 {
-                    int rowIndex = dgvReports.Rows.Add(data);
+                    conn.Open();
 
-                    string status = data[4].ToLower();
+                    // Pulls only reports that are NOT completed
+                    string query = "SELECT StudentName, StudentID, Location, BinCode, Status, ReportTime FROM Reports WHERE Status != 'Completed'";
 
-                    if (status == "pending")
-                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
-                    else if (status == "in progress")
-                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Khaki;
-                    else if (status == "completed")
-                        dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int rowIndex = dgvReports.Rows.Add(
+                                reader["StudentName"].ToString(),
+                                reader["StudentID"].ToString(),
+                                reader["Location"].ToString(),
+                                reader["BinCode"].ToString(),
+                                reader["Status"].ToString(),
+                                reader["ReportTime"].ToString()
+                            );
+
+                            string status = reader["Status"].ToString().ToLower();
+
+                            if (status == "pending")
+                                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
+                            else if (status == "in progress")
+                                dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Khaki;
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading active reports: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ================= HISTORY =================
+        // ================= HISTORY FROM DATABASE =================
         private void LoadHistory()
         {
-            string historyPath = Path.Combine(Application.StartupPath, "history.txt");
-
             dgvReports.Rows.Clear();
 
-            if (!File.Exists(historyPath))
+            try
             {
-                MessageBox.Show("No history found.");
-                return;
-            }
-
-            foreach (string line in File.ReadAllLines(historyPath))
-            {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-
-                string[] data = line.Split(',')
-                                    .Select(x => x.Trim())
-                                    .ToArray();
-
-                if (data.Length == 6)
+                using (SQLiteConnection conn = new SQLiteConnection(connString))
                 {
-                    int rowIndex = dgvReports.Rows.Add(data);
+                    conn.Open();
 
-                    dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor =
-                        System.Drawing.Color.LightGreen;
+                    // Pulls ONLY completed items for the history log
+                    string query = "SELECT StudentName, StudentID, Location, BinCode, Status, ReportTime FROM Reports WHERE Status = 'Completed'";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int rowIndex = dgvReports.Rows.Add(
+                                reader["StudentName"].ToString(),
+                                reader["StudentID"].ToString(),
+                                reader["Location"].ToString(),
+                                reader["BinCode"].ToString(),
+                                reader["Status"].ToString(),
+                                reader["ReportTime"].ToString()
+                            );
+
+                            // History records are styled green
+                            dgvReports.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                        }
+                    }
                 }
             }
-        }
-
-        private void SaveReports()
-        {
-            string path = Path.Combine(Application.StartupPath, "reports.txt");
-
-            var lines = dgvReports.Rows
-                .Cast<DataGridViewRow>()
-                .Where(r => !r.IsNewRow)
-                .Select(r => string.Join(",",
-                    r.Cells[0].Value,
-                    r.Cells[1].Value,
-                    r.Cells[2].Value,
-                    r.Cells[3].Value,
-                    r.Cells[4].Value,
-                    r.Cells[5].Value
-                ));
-
-            File.WriteAllLines(path, lines);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading history: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // ================= TOGGLE REPORTS =================
@@ -186,21 +174,49 @@ namespace GarbageManagementSystem
             }
         }
 
-        // ================= MARK COMPLETED =================
+        // ================= MARK COMPLETED IN DATABASE =================
         private void btnMarkCleared_Click(object sender, EventArgs e)
         {
             if (dgvReports.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a report first.");
+                MessageBox.Show("Please select a report first.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             DataGridViewRow row = dgvReports.SelectedRows[0];
 
-            row.Cells[4].Value = "Completed";
-            row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+            string studentId = row.Cells[1].Value?.ToString() ?? "";
+            string binCode = row.Cells[3].Value?.ToString() ?? "";
+            string timeStamp = row.Cells[5].Value?.ToString() ?? "";
 
-            SaveReports();
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connString))
+                {
+                    conn.Open();
+
+                    // Changes the status inside the data row to 'Completed'
+                    string query = "UPDATE Reports SET Status = 'Completed' WHERE StudentID = @id AND BinCode = @bin AND ReportTime = @time";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", studentId);
+                        cmd.Parameters.AddWithValue("@bin", binCode);
+                        cmd.Parameters.AddWithValue("@time", timeStamp);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Report successfully marked as cleared!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Live refresh the data grid view so it immediately drops out of sight
+                LoadReports();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error clearing report: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // ================= MAP TOGGLE =================
@@ -219,17 +235,12 @@ namespace GarbageManagementSystem
         // ================= EXIT =================
         private void btnOut_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            LogInPage login = new LogInPage();
+            login.Show();
+            this.Close();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUser_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void pictureBox2_Click(object sender, EventArgs e) { }
+        private void lblUser_Click(object sender, EventArgs e) { }
     }
 }

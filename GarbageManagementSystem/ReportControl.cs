@@ -109,12 +109,40 @@ namespace GarbageManagementSystem
             string status = "Pending";
             string dateTime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
 
-            string report = $"{studentName},{studentID},{location},{binCode},{status},{dateTime}";
+            // --- DATABASE SAVE CODE ---
+            // Points to your garbage.db file in the Debug/Release startup folder
+            string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;";
 
-            string path = Path.Combine(Application.StartupPath, "reports.txt");
-            File.AppendAllText(path, report + Environment.NewLine);
+            try
+            {
+                using (System.Data.SQLite.SQLiteConnection conn = new System.Data.SQLite.SQLiteConnection(connectionString))
+                {
+                    conn.Open();
 
-            MessageBox.Show("Report submitted successfully!");
+                    // SQL query to insert your 6 data items into the Reports table
+                    string query = @"INSERT INTO Reports (StudentName, StudentID, Location, BinCode, Status, ReportTime) 
+                                    VALUES (@name, @id, @location, @bin, @status, @time);";
+
+                    using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", studentName);
+                        cmd.Parameters.AddWithValue("@id", studentID);
+                        cmd.Parameters.AddWithValue("@location", location);
+                        cmd.Parameters.AddWithValue("@bin", binCode);
+                        cmd.Parameters.AddWithValue("@status", status);
+                        cmd.Parameters.AddWithValue("@time", dateTime);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Report submitted successfully to the database!");
+            }
+            catch (Exception ex)
+            {
+                // Just in case the table hasn't been created yet or the package is missing
+                MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnback_Click_1(object? sender, EventArgs e)
