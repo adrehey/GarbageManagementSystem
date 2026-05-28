@@ -40,8 +40,8 @@
             btnViewReports = new Button();
             btnViewHistory = new Button();
             btnMarkCleared = new Button();
-            lblNewReports = new Label();
             timerNotify = new System.Windows.Forms.Timer(components);
+            lblNewReports = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             panelTop.SuspendLayout();
             panelActions.SuspendLayout();
@@ -202,7 +202,7 @@
         private Label lblPending;
         private Button btnExit;
         private Button btnLog;
-        private Label lblNewReports;
         private System.Windows.Forms.Timer timerNotify;
+        private Label lblNewReports;
     }
 }
