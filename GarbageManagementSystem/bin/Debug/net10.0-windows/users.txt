@@ -3,3 +3,4 @@ nico,1234,Student,123
 coco,12345,Staff,321
 Andrheyy,andrheybenett0809,Staff,2011-0470
 jake,123,Student,2025
+Kinit,kinitgooc123,2025-0731
