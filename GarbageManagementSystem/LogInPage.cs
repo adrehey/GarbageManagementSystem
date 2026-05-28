@@ -7,8 +7,8 @@ namespace GarbageManagementSystem
 {
     public partial class LogInPage : Form
     {
-        // Modified connection string to use full path compatibility
-        private readonly string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;";
+        // UPGRADED CONNECTION STRING: Added BusyTimeout and WAL mode to completely prevent "database is locked" errors
+        private readonly string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;BusyTimeout=5000;Journal Mode=WAL;";
 
         public LogInPage()
         {
@@ -72,35 +72,36 @@ namespace GarbageManagementSystem
                 cmd.Parameters.AddWithValue("@id", studentIdInput);
                 cmd.Parameters.AddWithValue("@p", password);
 
-                SQLiteDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    string user = reader["Username"]?.ToString() ?? "";
-                    string id = reader["StudentID"]?.ToString() ?? "";
-                    string role = reader["Role"]?.ToString()?.Trim() ?? "";
-
-                    LoggedInUser.Name = user;
-                    LoggedInUser.ID = id;
-
-                    MessageBox.Show("Login Successful!");
-
-                    if (role.Equals("staff", StringComparison.OrdinalIgnoreCase))
+                    if (reader.Read())
                     {
-                        StaffDashboard staff = new StaffDashboard(user);
-                        staff.Show();
+                        string user = reader["Username"]?.ToString() ?? "";
+                        string id = reader["StudentID"]?.ToString() ?? "";
+                        string role = reader["Role"]?.ToString()?.Trim() ?? "";
+
+                        LoggedInUser.Name = user;
+                        LoggedInUser.ID = id;
+
+                        MessageBox.Show("Login Successful!");
+
+                        if (role.Equals("staff", StringComparison.OrdinalIgnoreCase))
+                        {
+                            StaffDashboard staff = new StaffDashboard(user);
+                            staff.Show();
+                        }
+                        else
+                        {
+                            StudentDashboard student = new StudentDashboard(user);
+                            student.Show();
+                        }
+
+                        this.Hide();
                     }
                     else
                     {
-                        StudentDashboard student = new StudentDashboard(user);
-                        student.Show();
+                        MessageBox.Show("Invalid Student ID or Password.");
                     }
-
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Student ID or Password.");
                 }
             }
         }

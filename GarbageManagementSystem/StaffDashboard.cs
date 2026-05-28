@@ -12,8 +12,8 @@ namespace GarbageManagementSystem
         private bool showingReports = false;
         private bool showingHistory = false;
 
-        // Connection string pointing directly to your garbage.db
-        private string connString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;";
+        // UPGRADED CONNECTION STRING: Added BusyTimeout and WAL mode to prevent database locking issues
+        private string connString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;BusyTimeout=5000;Journal Mode=WAL;";
 
         public StaffDashboard(string user)
         {
