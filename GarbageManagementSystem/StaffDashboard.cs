@@ -207,10 +207,7 @@ namespace GarbageManagementSystem
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                MessageBox.Show("Report successfully marked as cleared!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Live refresh the data grid view so it immediately drops out of sight
+                
                 LoadReports();
             }
             catch (Exception ex)

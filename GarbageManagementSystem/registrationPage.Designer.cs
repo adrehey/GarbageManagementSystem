@@ -102,6 +102,7 @@
             txtStudentID.PlaceholderText = "School ID";
             txtStudentID.Size = new Size(326, 23);
             txtStudentID.TabIndex = 5;
+            txtStudentID.KeyPress += txtStudentID_KeyPress;
             // 
             // panel1
             // 
@@ -203,6 +204,13 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // chkShowPass
+            // 
+            chkShowPass.Location = new Point(0, 0);
+            chkShowPass.Name = "chkShowPass";
+            chkShowPass.Size = new Size(104, 24);
+            chkShowPass.TabIndex = 0;
             // 
             // registrationPage
             // 

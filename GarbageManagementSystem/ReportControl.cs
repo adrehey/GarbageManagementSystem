@@ -109,9 +109,7 @@ namespace GarbageManagementSystem
             string status = "Pending";
             string dateTime = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
 
-            // --- DATABASE SAVE CODE ---
-            // Points to your garbage.db file in the Debug/Release startup folder
-            // UPGRADED CONNECTION STRING
+          
             string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;BusyTimeout=5000;Journal Mode=WAL;";
 
             try
@@ -137,7 +135,7 @@ namespace GarbageManagementSystem
                     }
                 }
 
-                MessageBox.Show("Report submitted successfully to the database!");
+                MessageBox.Show("Report submitted successfully!");
             }
             catch (Exception ex)
             {

@@ -162,9 +162,9 @@
             label4.ForeColor = Color.Transparent;
             label4.Location = new Point(67, 208);
             label4.Name = "label4";
-            label4.Size = new Size(108, 23);
+            label4.Size = new Size(100, 23);
             label4.TabIndex = 6;
-            label4.Text = "Username:";
+            label4.Text = "School ID:";
             // 
             // label3
             // 

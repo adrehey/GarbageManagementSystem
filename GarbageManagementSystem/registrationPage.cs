@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GarbageManagementSystem
 {
     public partial class registrationPage : Form
     {
-        private readonly string connectionString = "Data Source=garbage.db;Version=3;";
+        private readonly string connectionString = $"Data Source={Path.Combine(Application.StartupPath, "garbage.db")};Version=3;BusyTimeout=5000;Journal Mode=WAL;";
 
         public registrationPage()
         {
@@ -39,9 +41,24 @@ namespace GarbageManagementSystem
             string studentID = txtStudentID.Text.Trim();
             string role = "student"; // default role
 
+           
             if (username == "" || password == "" || studentID == "")
             {
-                MessageBox.Show("Please fill in all fields.");
+                MessageBox.Show("Please fill in all fields.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+          
+            if (password.Length <= 2)
+            {
+                MessageBox.Show("Password must be more than 2 characters long.", "Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+           
+            if (!studentID.All(c => char.IsDigit(c) || c == '-'))
+            {
+                MessageBox.Show("Please enter a valid Student ID (numbers and dashes only).", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -57,7 +74,7 @@ namespace GarbageManagementSystem
 
                 if (exists > 0)
                 {
-                    MessageBox.Show("Username already exists.");
+                    MessageBox.Show("Username already exists.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -74,7 +91,7 @@ namespace GarbageManagementSystem
                 cmd.ExecuteNonQuery();
             }
 
-            MessageBox.Show("Registration Successful!");
+            MessageBox.Show("Registration Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnbackToLog_Click(object sender, EventArgs e)
@@ -82,6 +99,14 @@ namespace GarbageManagementSystem
             LogInPage login = new LogInPage();
             login.Show();
             this.Hide();
+        }
+
+        private void txtStudentID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

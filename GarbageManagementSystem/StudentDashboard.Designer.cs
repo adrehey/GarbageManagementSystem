@@ -93,7 +93,7 @@
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(113, 23);
             lblWelcome.TabIndex = 7;
-            lblWelcome.Text = "Welcome, !";
+            lblWelcome.Text = "Welcome";
             // 
             // pictureBox3
             // 
